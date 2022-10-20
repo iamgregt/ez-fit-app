@@ -4,20 +4,27 @@ import Hub from './Hub';
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { PhotoCamera } from '@mui/icons-material'
-import { makeStyles } from '@mui/material/styles/'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { makeStyles } from  '@mui/styles'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { red }from '@mui/material/colors/';
 
-const useStyles = makeStyles((theme) => ({
-  background: theme.palette.primary.main,
-}));
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[500]
+    }
+  }
+});
 
 
 function App() {
-  const classes = useStyles()
+  // const classes = useStyles()
 
   return (
     <>
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
     <CssBaseline />
     <AppBar position='relative'>
       <Toolbar>
@@ -26,7 +33,7 @@ function App() {
       </Toolbar>
     </AppBar>
     <main>
-      <div className={classes.container}>
+      <div>
         <Container maxWidth='sm'>
           <Typography variant='h2' align='center' color='textPrimary' gutterBottom>
             Photo Album
