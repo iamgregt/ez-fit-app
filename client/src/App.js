@@ -64,7 +64,7 @@ function App() {
               </Grid>
             </Grid>
           </div>
-        
+        <Trainer />
         </Container>
 
       </Paper>

@@ -124,9 +124,6 @@ export default function Sidebar() {
         className={clsx(classes.content, {[classes.contentShift]: open})}
       >
       <Toolbar/>
-        <Typography>
-          Resize the screen above/below 375px to see responsiveness
-        </Typography>
       </main>
     </div>
   );
