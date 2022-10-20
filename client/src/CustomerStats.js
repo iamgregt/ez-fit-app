@@ -10,7 +10,10 @@ function CustomerStats(){
                 <Grid container spacing={3} sx={{ justifyContent: 'space-between'}}>
                     <Grid>
                         <Typography color='textSecondary' gutterBottom variant='overline'>
-                            3 client
+                            Client Count
+                        </Typography>
+                        <Typography color='textPrimary' variant='h4'>
+                            3
                         </Typography>
                     </Grid>
                 </Grid>
