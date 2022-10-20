@@ -1,12 +1,13 @@
 import './App.css';
 import Trainer from './Trainer';
 import Hub from './Hub';
-import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup } from '@mui/material';
+import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, Paper, Drawer } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { PhotoCamera } from '@mui/icons-material'
 import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
+import Sidebar from './Sidebar';
 
 
 
@@ -18,9 +19,15 @@ const theme = createTheme({
   }
 });
 
+const useStyles = makeStyles({
+  drawer: {
+    width: 240,
+  }
+})
+
 
 function App() {
-  // const classes = useStyles()
+  const classes = useStyles()
 
   return (
     <>
@@ -32,9 +39,11 @@ function App() {
         <Typography variant='h6'>Photo Album</Typography>
       </Toolbar>
     </AppBar>
+    
     <main>
-      <div>
+      <Paper>
         <Container maxWidth='sm'>
+          <Sidebar />
           <Typography variant='h2' align='center' color='textPrimary' gutterBottom>
             Photo Album
           </Typography>
@@ -55,8 +64,10 @@ function App() {
               </Grid>
             </Grid>
           </div>
+        
         </Container>
-      </div>
+
+      </Paper>
       {/* <ButtonGroup variant="contained" aria-label="outlined primary button group">
       <Button>One</Button>
       <Button>Two</Button>
