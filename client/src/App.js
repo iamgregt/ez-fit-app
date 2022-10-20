@@ -4,11 +4,20 @@ import Hub from './Hub';
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { PhotoCamera } from '@mui/icons-material'
+import { makeStyles } from '@mui/material/styles/'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const useStyles = makeStyles((theme) => ({
+  background: theme.palette.primary.main,
+}));
 
 
 function App() {
+  const classes = useStyles()
+
   return (
     <>
+    <ThemeProvider>
     <CssBaseline />
     <AppBar position='relative'>
       <Toolbar>
@@ -17,7 +26,7 @@ function App() {
       </Toolbar>
     </AppBar>
     <main>
-      <div>
+      <div className={classes.container}>
         <Container maxWidth='sm'>
           <Typography variant='h2' align='center' color='textPrimary' gutterBottom>
             Photo Album
@@ -47,6 +56,7 @@ function App() {
       <Button>Three</Button>
     </ButtonGroup> */}
     </main>
+    </ThemeProvider>
     </>
   );
 }
