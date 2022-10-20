@@ -75,9 +75,9 @@
   }
   
   .profile {
-    color: var(--cloud-burst);
-    font-family: var(--font-family-proximanova-bold);
-    font-size: var(--font-size-s);
+    color: rgba(37, 46, 72, 1);
+    font-family: "ProximaNova-Bold";
+    font-size: 12px;
     font-weight: 700;
     left: 12px;
     letter-spacing: 0;
@@ -89,7 +89,7 @@
   }
   
   .rectangle-383 {
-    background-color: var(--white);
+    background-color: white;
     border-radius: 0px 37px 0px 37px;
     height: 591px;
     left: 0;
@@ -102,4 +102,11 @@
     border-radius: 37px 37px 37px 0px;
     height: 316px;
     top: 0;
+  }
+
+  .rectangle-384 {
+    background-color: var(--white);
+    border-radius: 37px 37px 37px 0px;
+    height: 316px;
+    width: 74px;
   }

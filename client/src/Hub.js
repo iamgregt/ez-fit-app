@@ -31,11 +31,11 @@ function Hub(){
       return (
         <div className="menu-bar">
           <div className="overlap-group">
-            <Rectangle383 />
+          <div className="rectangle-384"></div>
             <img className="gallery" src={gallery} alt="gallery" />
             <img className="icon-cloud" src={cloud} alt="icon-cloud" />
             <img className="browse" src={browse} alt="browse" />
-            <Rectangle383 className="rectangle-384" />
+            <div className="rectangle-383"></div>
             <img className="exclusion-1" src={exclusion1} alt="Exclusion 1" />
             <img className="icon-settings" src={settings} alt="icon-settings" />
             <div className="profile">
@@ -46,11 +46,10 @@ function Hub(){
       );
     }
     
-    function Rectangle383(props) {
-      const { className } = props;
+    // function Rectangle383() {
     
-      return <div className={`rectangle-383 ${className || ""}`}></div>;
-    }
+    //   return <div className="rectangle-383"></div>;
+    // }
     
     const rectangle3832Data = {
       className: "rectangle-384",

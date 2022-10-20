@@ -9,7 +9,6 @@ class CreateTrainers < ActiveRecord::Migration[6.1]
       t.boolean :virtual
       t.boolean :accepting_client
       t.integer :workouts_sold
-
       t.timestamps
     end
   end
