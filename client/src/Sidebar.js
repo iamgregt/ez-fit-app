@@ -12,8 +12,8 @@ import ListItemText from "@mui/material/ListItemText";
 import AppsIcon from "@mui/icons-material/Apps";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from "@mui/material";
 
 const drawerWidth = 240;
 const transitionDuration = 1000; //can also use theme.transitions.duration
@@ -76,6 +76,7 @@ export default function Sidebar() {
   return (
     <div>
       {/*fixed is default */}
+      
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton //hide on desktop

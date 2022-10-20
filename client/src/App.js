@@ -1,13 +1,14 @@
 import './App.css';
 import Trainer from './Trainer';
 import Hub from './Hub';
-import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, Paper, Drawer } from '@mui/material';
+import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, Paper, Drawer, Avatar } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { PhotoCamera } from '@mui/icons-material'
 import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
 import Sidebar from './Sidebar';
+import { deepPurple } from "@mui/material/colors";
 
 
 
@@ -35,6 +36,7 @@ function App() {
     <CssBaseline />
     <AppBar position='relative'>
       <Toolbar>
+      <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
         <PhotoCamera />
         <Typography variant='h6'>Photo Album</Typography>
       </Toolbar>
@@ -43,7 +45,7 @@ function App() {
     <main>
       <Paper>
         <Container maxWidth='sm'>
-          <Sidebar />
+          {/* <Sidebar /> */}
           <Typography variant='h2' align='center' color='textPrimary' gutterBottom>
             Photo Album
           </Typography>
