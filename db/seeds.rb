@@ -28,4 +28,16 @@ Client.create(
     weight: 235
 )
 
+
+Client.create(
+    name: "Michael Jordan2", 
+    email: "testdsemail@gmail.com", 
+    password: "test", 
+    age: 30, 
+    location: 80202, 
+    total_workouts: 0, 
+    height: 93, 
+    weight: 235
+)
+
 puts "done seeding"

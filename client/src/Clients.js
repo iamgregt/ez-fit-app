@@ -23,7 +23,7 @@ function Clients({clients}){
     const data = {
         datasets: [
           {
-            data: [1, 15, 22],
+            data: [clientCount, 15, 22],
             backgroundColor: ['#3F51B5', '#e53935', '#FB8C00'],
             borderWidth: 8,
             borderColor: '#FFFFFF',

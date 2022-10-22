@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :workouts
   get "/clients/clientcount", to: "clients#clients"
   resources :clients
   resources :trainers
