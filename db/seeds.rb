@@ -16,3 +16,16 @@ Trainer.create(
     accepting_clients: true,
     workouts_sold: 0
 )
+
+Client.create(
+    name: "Michael Jordan", 
+    email: "testemail@gmail.com", 
+    password: "test", 
+    age: 30, 
+    location: 80202, 
+    total_workouts: 0, 
+    height: 93, 
+    weight: 235
+)
+
+puts "done seeding"

@@ -29,7 +29,7 @@ function App() {
     <Box component='main' sx={{flexGrow: 1, py: 8}}>
       <Container maxWidth={false}>
       <Grid>
-        <CustomerStats />
+        <Clients />
       </Grid>
       </Container>
     </Box>

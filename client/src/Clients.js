@@ -6,11 +6,17 @@ import { useEffect, useState } from "react";
 
 function Clients(){
 
-    const [clientCount, setClientCount] = useState()
+    const [clientCount, setClientCount] = useState([])
 
     useEffect(() => {
-        fetch('/customers')
-    })
+        fetch('/clients')
+        .then(r => r.json())
+        .then(data => {
+            console.log(data)
+            setClientCount(data.length)
+            console.log('clients loaded')
+        })
+    }, [])
 
     return(
         <Card sx={{height: '100%'}}>
@@ -21,7 +27,7 @@ function Clients(){
                             Client Count
                         </Typography>
                         <Typography color='textPrimary' variant='h4'>
-                            3
+                            {clientCount}
                         </Typography>
                     </Grid>
                 </Grid>
