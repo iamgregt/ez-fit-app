@@ -8,14 +8,22 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 
-function Clients(){
+function Clients({clients}){
 
     const [clientCount, setClientCount] = useState()
+
+    useEffect(() => {
+        fetch('/clients/clientcount')
+        .then(r => r.json())
+        .then(resp => {
+            setClientCount(resp)
+        })
+    })
 
     const data = {
         datasets: [
           {
-            data: [clientCount, 15, 22],
+            data: [1, 15, 22],
             backgroundColor: ['#3F51B5', '#e53935', '#FB8C00'],
             borderWidth: 8,
             borderColor: '#FFFFFF',
@@ -48,15 +56,7 @@ function Clients(){
       };
     
 
-    useEffect(() => {
-        fetch('/clients')
-        .then(r => r.json())
-        .then(data => {
-            console.log(data)
-            setClientCount(data.length)
-            console.log('clients loaded')
-        })
-    }, [])
+
 
     return(
         <Card sx={{height: '100%'}}>

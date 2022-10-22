@@ -9,7 +9,39 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-function SessionsByMonth(){
+function SessionsByMonth({clients}){
+
+//   function getMonthName(monthNumber) {
+//     const date = new Date();
+//     date.setMonth(monthNumber - 1);
+  
+//     let monthName = date.toLocaleString('en-US', { month: 'long' });
+//     console.log(monthName)
+//   }
+  
+
+//  const signUpMonth = () => {
+//       const d = new Date()
+//       let month = d.getMonth()
+//       console.log(month)
+//       getMonthName(month)
+//  }
+
+//  clients.map((c) => {
+//   return(
+//     signUpMonth(c)
+//   )
+//  })
+
+ function getMonthName(monthNumber) {
+  const date = new Date();
+  date.setMonth(monthNumber - 1);
+
+  let monthName = date.toLocaleString('en-US', { month: 'long' });
+  console.log(monthName)
+}
+
+
   ChartJS.register(
     CategoryScale,
     LinearScale,

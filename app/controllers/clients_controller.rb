@@ -22,6 +22,10 @@ class ClientsController < ApplicationController
         head :no_content 
     end
 
+    def clients
+        render json: Client.all.count
+    end
+
     private
 
     def client_params

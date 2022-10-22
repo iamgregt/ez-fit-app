@@ -6,6 +6,7 @@ import { red }from '@mui/material/colors/';
 import Grid from '@mui/material/Unstable_Grid2'
 import Clients from './Clients';
 import SessionsByMonth from './Sessions-By-Month';
+import { useState, useEffect } from 'react';
 
 const theme = createTheme({
   palette: {
@@ -25,6 +26,20 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles()
 
+  const [clients, setClients] = useState()
+
+  useEffect(() => {
+    fetch('/clients')
+    .then(r => r.json())
+    .then(data => {
+        console.log(data)
+        setClients(data)
+        console.log('clients loaded')
+    })
+}, [])
+
+
+
   return (
     <>
     <Box component='main' sx={{flexGrow: 1, py: 8}}>
@@ -34,7 +49,7 @@ function App() {
             md={6}
             xl={3}
             xs={12}>
-        <Clients />
+        <Clients clients={clients} />
       </Grid>
       <Grid
             item
@@ -43,7 +58,7 @@ function App() {
             xl={9}
             xs={12}
           >
-            <SessionsByMonth />
+            <SessionsByMonth clients={clients} />
           </Grid>
         </Grid>
       </Container>
