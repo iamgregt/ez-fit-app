@@ -1,12 +1,16 @@
 import { CardContent, Typography, Card } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
-function CustomerStats(){
+function Clients(){
 
     const [clientCount, setClientCount] = useState()
+
+    useEffect(() => {
+        fetch('/customers')
+    })
 
     return(
         <Card sx={{height: '100%'}}>

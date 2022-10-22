@@ -4,7 +4,7 @@ import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
 import Grid from '@mui/material/Unstable_Grid2'
-import CustomerStats from './CustomerStats';
+import Clients from './Clients';
 
 const theme = createTheme({
   palette: {
