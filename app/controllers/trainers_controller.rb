@@ -1,4 +1,7 @@
 class TrainersController < ApplicationController
+
+    wrap_parameters format: []
+
     def index
         render json: Trainer.all
     end
