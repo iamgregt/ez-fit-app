@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 
-function Clients({clients}){
+function Clients(){
 
     const [clientCount, setClientCount] = useState()
 

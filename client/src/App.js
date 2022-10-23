@@ -1,5 +1,5 @@
 import './App.css';
-import { Box, Container } from '@mui/material';
+import { AppBar, Box, Container, CssBaseline, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText } from '@mui/material';
 import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
@@ -7,7 +7,13 @@ import Grid from '@mui/material/Unstable_Grid2'
 import Clients from './Clients';
 import SessionsByMonth from './Sessions-By-Month';
 import { useState, useEffect } from 'react';
+import WorkoutForm from './WorkoutForm';
+import { Route, Routes } from 'react-router-dom'
+import HomePage from './HomePage';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 
+const drawerWidth = 240;
 const theme = createTheme({
   palette: {
     primary: {
@@ -42,26 +48,54 @@ function App() {
 
   return (
     <>
-    <Box component='main' sx={{flexGrow: 1, py: 8}}>
-      <Container maxWidth={false}>
-        <Grid container spacing={3}>
-        <Grid lg={4}
-            md={6}
-            xl={3}
-            xs={12}>
-        <Clients clients={clients} />
-      </Grid>
-      <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            <SessionsByMonth clients={clients} />
-          </Grid>
-        </Grid>
-      </Container>
+    <Box sx={{display: 'flex'}}>
+      <CssBaseline />
+      <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <Toolbar>
+          <Typography variant='h6' noWrap component={'div'}>
+            ezFit
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer variant='permanent' sx={{width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: {width: drawerWidth, boxSizing: 'border-box'}}}>
+        <Toolbar />
+        <Box sx={{overflow: 'auto'}} >
+          <List>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => {
+              return (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+              )
+            })}
+          </List>
+          <Divider />
+          <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+    <Box component='main' sx={{ flexGrow: 1, p: 3}}>
+      <Toolbar />
+    <Routes>
+      <Route path='/' element={<HomePage clients={clients} />} />
+      <Route path="new-workout" element={<WorkoutForm />} />
+    </Routes>
+    </Box>
     </Box>
     </>
   );
