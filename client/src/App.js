@@ -8,10 +8,12 @@ import Clients from './Clients';
 import SessionsByMonth from './Sessions-By-Month';
 import { useState, useEffect } from 'react';
 import WorkoutForm from './WorkoutForm';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+
+
 
 const drawerWidth = 240;
 const theme = createTheme({
@@ -31,6 +33,20 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles()
+  let navigate = useNavigate()
+
+const itemsList = [
+  {
+    text: "Clients",
+    icon: <InboxIcon />,
+    onClick: () => navigate('/new-workout')
+  },
+  {
+    text: "Revenue",
+    icon: <MailIcon />,
+    onClick: () => navigate('/new-workout')
+  }
+]
 
   const [clients, setClients] = useState()
 
@@ -61,9 +77,10 @@ function App() {
         <Toolbar />
         <Box sx={{overflow: 'auto'}} >
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => {
+            {itemsList.map((item, index) => {
+              const {text, icon, onClick} = item
               return (
-              <ListItem key={text} disablePadding>
+              <ListItem key={text} disablePadding onClick={onClick}>
                 <ListItemButton>
                   <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
