@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
 
     wrap_parameters format: []
+    rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 
     def index
         render json: Client.all
@@ -16,6 +17,10 @@ class ClientsController < ApplicationController
         client.update(client_params)
     end
 
+    def create
+        render json: Client.create!(client_params)
+    end
+
     def destroy
         client = Client.find_by(id: [params[:id]])
         client.delete
@@ -29,6 +34,10 @@ class ClientsController < ApplicationController
     private
 
     def client_params
-        params.permit(:name, :email, :years_training, :location, :in_person, :virtual, :accepting_clients, :workouts_sold)
+        params.permit(:name, :email, :years_training, :location, :in_person, :virtual, :accepting_clients, :workouts_sold, :password)
+    end
+
+    def invalid_data(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end

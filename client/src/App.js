@@ -106,7 +106,7 @@ const itemsList = [
           </List>
         </Box>
       </Drawer>
-    <Box component='main' sx={{ flexGrow: 1, p: 3}}>
+    <Box component='main' sx={{ flexGrow: 1, p: 3, background: '#0e101c'}}>
       <Toolbar />
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
