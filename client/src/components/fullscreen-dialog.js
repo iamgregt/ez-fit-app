@@ -38,7 +38,7 @@ function FullScreenDialog({workout}) {
   };
 
   function handleUpdatedWorkout(w){
-    fetch(`/workout/${workout.id}`, {
+    fetch(`/workouts/${workout.id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
