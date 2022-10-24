@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :conversations
-  resources :messages
   resources :workouts
   get "/clients/clientcount", to: "clients#clients"
   resources :clients
