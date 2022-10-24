@@ -14,7 +14,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NewClientForm from './NewClientForm';
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
 
 const drawerWidth = 240;
@@ -35,22 +35,29 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles()
-  let navigate = useNavigate()
+  let navigate = useNavigate()  
+  
+  const [clients, setClients] = useState()
 
 const itemsList = [
   {
     text: "Dashboard",
     icon: <DashboardIcon />,
-    onClick: () => navigate('/new-workout')
+    onClick: () => navigate('/')
   },
   {
     text: "Clients",
     icon: <EmojiPeopleIcon />,
     onClick: () => navigate('/new-workout')
+  }, 
+  {
+    text: "Sessions",
+    icon: <FitnessCenterIcon />,
+    onClick: () => navigate('/workouts')
   }
 ]
 
-  const [clients, setClients] = useState()
+
 
   useEffect(() => {
     fetch('/clients')
@@ -111,6 +118,7 @@ const itemsList = [
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
       <Route path="new-workout" element={<NewClientForm />} />
+      <Route path="/workouts" element ={<SessionsByMonth />} />
     </Routes>
     </Box>
     </Box>
