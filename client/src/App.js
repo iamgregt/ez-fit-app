@@ -38,6 +38,7 @@ function App() {
   let navigate = useNavigate()  
   
   const [clients, setClients] = useState()
+  const [workouts, setWorkouts] = useState()
 
 const itemsList = [
   {
@@ -66,6 +67,14 @@ const itemsList = [
         console.log(data)
         setClients(data)
         console.log('clients loaded')
+    })
+
+    fetch('/workouts')
+    .then(r => r.json())
+    .then(resp => {
+      setWorkouts(resp)
+      console.log(resp)
+      console.log('workouts loaded')
     })
 }, [])
 
@@ -118,7 +127,7 @@ const itemsList = [
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
       <Route path="new-workout" element={<NewClientForm />} />
-      <Route path="/workouts" element ={<Workouts clients={clients} />} />
+      <Route path="/workouts" element ={<Workouts workouts={workouts} />} />
       <Route path="/clients" element={<Clients clients={clients} />} />
     </Routes>
     </Box>

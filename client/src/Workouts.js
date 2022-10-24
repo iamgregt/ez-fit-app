@@ -80,7 +80,7 @@ const orders = [
   }
 ];
 
-function Workouts({clients}){
+function Workouts({workouts}){
   return (
     <Card>
     <CardHeader title="Latest Workouts" />
@@ -93,7 +93,7 @@ function Workouts({clients}){
                 WO#
               </TableCell>
               <TableCell style={{width: '15%'}}>
-                Name
+                Client Name
               </TableCell>
               <TableCell sortDirection="desc" style={{width: '18%'}}>
                 <Tooltip
@@ -108,8 +108,8 @@ function Workouts({clients}){
                   </TableSortLabel>
                 </Tooltip>
               </TableCell>
-              <TableCell style={{width: '16px'}}>
-                Client Attendance
+              <TableCell style={{width: '15%'}}>
+                Workout Type
               </TableCell>
               <TableCell>
                 Status
@@ -117,30 +117,24 @@ function Workouts({clients}){
             </TableRow>
           </TableHead>
           <TableBody>
-            {clients ? clients.map((client) => {
+            {workouts ? workouts.map((workout) => {
               return(
   
                   <TableRow
                     hover
-                    key={client.id}
+                    key={workout.id}
                   >
                     <TableCell>
-                      {client.age}
+                      {workout.id}
                     </TableCell>
                     <TableCell>
-                      {client.name}
+                      {workout.client.name}
                     </TableCell>
                     <TableCell>
-                      {client.created_at}
+                      {workout.created_at}
                     </TableCell>
                     <TableCell>
-                      {/* <SeverityPill
-                        color={(order.status === 'delivered' && 'success')
-                        || (order.status === 'refunded' && 'error')
-                        || 'warning'}
-                      >
-                        {order.status}
-                      </SeverityPill> */}
+                     {workout.name}
                     </TableCell>
                   </TableRow>
                 
