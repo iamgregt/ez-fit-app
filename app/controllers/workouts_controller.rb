@@ -2,11 +2,11 @@ class WorkoutsController < ApplicationController
     wrap_parameters format: []
     
     def index
-        render json: Workout.all
+        render json: Workout.all, include: [:client, :trainer]
     end
 
     def show 
-        render json: Workout.find_by(id:params[:id])
+        render json: Workout.find_by(id:params[:id]), include: [:client, :trainer]
     end
 
     def update

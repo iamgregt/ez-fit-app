@@ -45,7 +45,8 @@ Workout.create(
     date_time: 02022022,
     trainer_id: 1,
     virtual: true,
-    cost: 5
+    cost: 5,
+    client_id: 2
     
 )
 
