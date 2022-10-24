@@ -89,13 +89,13 @@ function Sessions({clients}){
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>
-                Order Ref
+              <TableCell style={{width:'8%', padding: '16px'}}>
+                WO#
               </TableCell>
-              <TableCell>
-                Client
+              <TableCell style={{width: '15%'}}>
+                Name
               </TableCell>
-              <TableCell sortDirection="desc">
+              <TableCell sortDirection="desc" style={{width: '18%'}}>
                 <Tooltip
                   enterDelay={300}
                   title="Sort"
@@ -107,6 +107,9 @@ function Sessions({clients}){
                     Date
                   </TableSortLabel>
                 </Tooltip>
+              </TableCell>
+              <TableCell>
+                Client Attendance
               </TableCell>
               <TableCell>
                 Status
