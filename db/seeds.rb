@@ -40,4 +40,13 @@ Client.create(
     weight: 235
 )
 
+Workout.create(
+    name: "Leg Workout",
+    date_time: 02022022,
+    trainer_id: 1,
+    virtual: true,
+    cost: 5
+    
+)
+
 puts "done seeding"
