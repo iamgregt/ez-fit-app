@@ -5,7 +5,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
 import Grid from '@mui/material/Unstable_Grid2'
 import Clients from './Clients';
-import Sessions from './Sessions';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
@@ -15,6 +14,7 @@ import NewClientForm from './NewClientForm';
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import Workouts from './Workouts';
 
 
 const drawerWidth = 240;
@@ -51,9 +51,9 @@ const itemsList = [
     onClick: () => navigate('/clients')
   }, 
   {
-    text: "Sessions",
+    text: "Workouts",
     icon: <FitnessCenterIcon />,
-    onClick: () => navigate('/sessions')
+    onClick: () => navigate('/workouts')
   }
 ]
 
@@ -118,7 +118,7 @@ const itemsList = [
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
       <Route path="new-workout" element={<NewClientForm />} />
-      <Route path="/sessions" element ={<Sessions clients={clients} />} />
+      <Route path="/sessions" element ={<Workouts clients={clients} />} />
       <Route path="/clients" element={<Clients clients={clients} />} />
     </Routes>
     </Box>

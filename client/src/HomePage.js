@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Unstable_Grid2'
-import SessionsByMonth from './Sessions';
 import { Box, Container } from '@mui/material';
 import Clients from './Clients';
+import Workouts from './Workouts';
 
 
 function HomePage({clients}){
@@ -22,7 +22,7 @@ function HomePage({clients}){
               xl={9}
               xs={12}
             >
-              <SessionsByMonth clients={clients} />
+              <Workouts clients={clients} />
             </Grid>
           </Grid>
         </Container>

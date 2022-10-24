@@ -80,7 +80,7 @@ const orders = [
   }
 ];
 
-function Sessions({clients}){
+function Workouts({clients}){
   return (
     <Card>
     <CardHeader title="Latest Workouts" />
@@ -170,4 +170,4 @@ function Sessions({clients}){
   )
 }
 
-export default Sessions
+export default Workouts
