@@ -15,7 +15,7 @@ import {
   Tooltip
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-// import SeverityPill from './SeverityPill';
+import FullScreenDialog from './components/fullscreen-dialog';
 
 const orders = [
   {
@@ -114,6 +114,9 @@ function Workouts({workouts}){
               <TableCell>
                 Status
               </TableCell>
+              <TableCell>
+              {''}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -135,6 +138,12 @@ function Workouts({workouts}){
                     </TableCell>
                     <TableCell>
                      {workout.name}
+                    </TableCell>
+                    <TableCell>
+                      {workout.status}
+                    </TableCell>
+                    <TableCell>
+                    <FullScreenDialog workout={workout} />
                     </TableCell>
                   </TableRow>
                 
