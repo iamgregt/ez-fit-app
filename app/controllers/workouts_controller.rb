@@ -11,7 +11,8 @@ class WorkoutsController < ApplicationController
 
     def update
         workout = Workout.find_by(id:params[:id])
-        render json: workout.update(workout_params)
+        workout.update(workout_params)
+        render json: workout, status: :accepted
     end
 
     def destroy

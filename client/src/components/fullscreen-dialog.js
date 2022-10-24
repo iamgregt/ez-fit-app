@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { TextField } from '@mui/material';
+import { Table, TableCell, TableHead, TextField, TableRow, TableBody } from '@mui/material';
 import { useState } from 'react';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -26,15 +26,23 @@ function FullScreenDialog({workout}) {
     setOpen(true);
   };
 
+  const handleClickClose = () => {
+    setOpen(false);
+  };
+
   const handleClose = (e) => {
     setOpen(false);
     console.log(e)
 
     const updatedWorkout = {
-        notes: notes.target.value
+        notes: notes ? notes.target.value : ""
     }
 
-    handleUpdatedWorkout(updatedWorkout)
+    if(updatedWorkout.notes !== ""){
+        handleUpdatedWorkout(updatedWorkout)
+    }else{
+        console.log('no changes')
+    }
   };
 
   function handleUpdatedWorkout(w){
@@ -65,7 +73,7 @@ function FullScreenDialog({workout}) {
             <IconButton
               edge="start"
               color="inherit"
-              onClick={handleClose}
+              onClick={handleClickClose}
               aria-label="close"
             >
               <CloseIcon />
@@ -99,6 +107,22 @@ function FullScreenDialog({workout}) {
           onChange={setNotes}
         />
         </List>
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>
+                        Previous Notes
+                    </TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>
+                        {workout.notes ? workout.notes : "NO NOTES"}
+                    </TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
       </Dialog>
     </div>
   );
