@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2022_10_24_015415) do
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "recipient_id"
+    t.integer "trainer_id"
+    t.integer "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
