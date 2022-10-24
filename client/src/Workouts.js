@@ -108,7 +108,7 @@ function Workouts({clients}){
                   </TableSortLabel>
                 </Tooltip>
               </TableCell>
-              <TableCell>
+              <TableCell style={{width: '16px'}}>
                 Client Attendance
               </TableCell>
               <TableCell>
