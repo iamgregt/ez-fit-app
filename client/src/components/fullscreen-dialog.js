@@ -20,14 +20,34 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function FullScreenDialog({workout}) {
   const [open, setOpen] = useState(false);
+  const [notes, setNotes] = useState("")
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
     setOpen(false);
+    console.log(e)
+
+    const updatedWorkout = {
+        notes: notes.target.value
+    }
+
+    handleUpdatedWorkout(updatedWorkout)
   };
+
+  function handleUpdatedWorkout(w){
+    fetch(`/workout/${workout.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(w)
+    })
+    .then(r => r.json())
+    .then(resp => console.log(resp))
+  }
 
   return (
     <div>
@@ -71,11 +91,12 @@ function FullScreenDialog({workout}) {
           </ListItem>
           <TextField
           id="outlined-multiline-static"
-          label="Enter Notes Here"
+          label="Notes"
           multiline
           rows={4}
-          placeholder="Enter Notes Here"
+          placeholder="Enter Notes Here..."
           style={{width: '50%'}}
+          onChange={setNotes}
         />
         </List>
       </Dialog>
