@@ -7,11 +7,13 @@ import Grid from '@mui/material/Unstable_Grid2'
 import Clients from './Clients';
 import SessionsByMonth from './Sessions-By-Month';
 import { useState, useEffect } from 'react';
-import WorkoutForm from './WorkoutForm';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import NewClientForm from './NewClientForm';
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 
 
@@ -37,13 +39,13 @@ function App() {
 
 const itemsList = [
   {
-    text: "Clients",
-    icon: <InboxIcon />,
+    text: "Dashboard",
+    icon: <DashboardIcon />,
     onClick: () => navigate('/new-workout')
   },
   {
-    text: "Revenue",
-    icon: <MailIcon />,
+    text: "Clients",
+    icon: <EmojiPeopleIcon />,
     onClick: () => navigate('/new-workout')
   }
 ]
@@ -82,9 +84,7 @@ const itemsList = [
               return (
               <ListItem key={text} disablePadding onClick={onClick}>
                 <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
+                    {icon && <ListItemIcon>{icon}</ListItemIcon>}
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
@@ -110,7 +110,7 @@ const itemsList = [
       <Toolbar />
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
-      <Route path="new-workout" element={<WorkoutForm />} />
+      <Route path="new-workout" element={<NewClientForm />} />
     </Routes>
     </Box>
     </Box>

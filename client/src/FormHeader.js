@@ -8,7 +8,7 @@ export default function FormHeader() {
   return (
     <div style={{ marginBottom: 10 }}>
       <h1 className="h1">
-        React Hook Form
+        New Client Form
       </h1>
     </div>
   );

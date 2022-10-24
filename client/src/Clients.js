@@ -10,6 +10,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Clients(){
 
+    // function newUserAdded(){
+    //     this.setState(prevState => ({
+    //         clientCount: prevState.clientCount + 1
+    //     })) 
+    // }
+
     const [clientCount, setClientCount] = useState()
 
     useEffect(() => {
