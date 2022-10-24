@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
 import Grid from '@mui/material/Unstable_Grid2'
 import Clients from './Clients';
-import SessionsByMonth from './Sessions-By-Month';
+import Sessions from './Sessions';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
@@ -48,12 +48,12 @@ const itemsList = [
   {
     text: "Clients",
     icon: <EmojiPeopleIcon />,
-    onClick: () => navigate('/new-workout')
+    onClick: () => navigate('/clients')
   }, 
   {
     text: "Sessions",
     icon: <FitnessCenterIcon />,
-    onClick: () => navigate('/workouts')
+    onClick: () => navigate('/sessions')
   }
 ]
 
@@ -86,7 +86,7 @@ const itemsList = [
         <Toolbar />
         <Box sx={{overflow: 'auto'}} >
           <List>
-            {itemsList.map((item, index) => {
+            {itemsList.map((item) => {
               const {text, icon, onClick} = item
               return (
               <ListItem key={text} disablePadding onClick={onClick}>
@@ -118,7 +118,8 @@ const itemsList = [
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
       <Route path="new-workout" element={<NewClientForm />} />
-      <Route path="/workouts" element ={<SessionsByMonth />} />
+      <Route path="/sessions" element ={<Sessions />} />
+      <Route path="/clients" element={<Clients clients={clients} />} />
     </Routes>
     </Box>
     </Box>

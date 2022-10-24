@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2'
-import SessionsByMonth from './Sessions-By-Month';
+import SessionsByMonth from './Sessions';
 import { Box, Container } from '@mui/material';
 import Clients from './Clients';
 

@@ -9,7 +9,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-function SessionsByMonth({clients}){
+function Sessions({clients}){
 
 //   function getMonthName(monthNumber) {
 //     const date = new Date();
@@ -81,4 +81,4 @@ function SessionsByMonth({clients}){
   )
 }
 
-export default SessionsByMonth
+export default Sessions
