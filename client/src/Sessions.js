@@ -1,83 +1,169 @@
+import { format } from 'date-fns';
+import { v4 as uuid } from 'uuid';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TableSortLabel,
+  Tooltip
+} from '@mui/material';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+// import SeverityPill from './SeverityPill';
+
+const orders = [
+  {
+    id: uuid(),
+    ref: 'CDD1049',
+    amount: 30.5,
+    customer: {
+      name: 'Ekaterina Tankova'
+    },
+    createdAt: 1555016400000,
+    status: 'pending'
+  },
+  {
+    id: uuid(),
+    ref: 'CDD1048',
+    amount: 25.1,
+    customer: {
+      name: 'Cao Yu'
+    },
+    createdAt: 1555016400000,
+    status: 'delivered'
+  },
+  {
+    id: uuid(),
+    ref: 'CDD1047',
+    amount: 10.99,
+    customer: {
+      name: 'Alexa Richardson'
+    },
+    createdAt: 1554930000000,
+    status: 'refunded'
+  },
+  {
+    id: uuid(),
+    ref: 'CDD1046',
+    amount: 96.43,
+    customer: {
+      name: 'Anje Keizer'
+    },
+    createdAt: 1554757200000,
+    status: 'pending'
+  },
+  {
+    id: uuid(),
+    ref: 'CDD1045',
+    amount: 32.54,
+    customer: {
+      name: 'Clarke Gillebert'
+    },
+    createdAt: 1554670800000,
+    status: 'delivered'
+  },
+  {
+    id: uuid(),
+    ref: 'CDD1044',
+    amount: 16.76,
+    customer: {
+      name: 'Adam Denisov'
+    },
+    createdAt: 1554670800000,
+    status: 'delivered'
+  }
+];
 
 function Sessions({clients}){
-
-//   function getMonthName(monthNumber) {
-//     const date = new Date();
-//     date.setMonth(monthNumber - 1);
+  return (
+    <Card>
+    <CardHeader title="Latest Workouts" />
+    <PerfectScrollbar>
+      <Box sx={{ minWidth: 800 }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                Order Ref
+              </TableCell>
+              <TableCell>
+                Client
+              </TableCell>
+              <TableCell sortDirection="desc">
+                <Tooltip
+                  enterDelay={300}
+                  title="Sort"
+                >
+                  <TableSortLabel
+                    active
+                    direction="desc"
+                  >
+                    Date
+                  </TableSortLabel>
+                </Tooltip>
+              </TableCell>
+              <TableCell>
+                Status
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {clients ? clients.map((client) => {
+              return(
   
-//     let monthName = date.toLocaleString('en-US', { month: 'long' });
-//     console.log(monthName)
-//   }
-  
-
-//  const signUpMonth = () => {
-//       const d = new Date()
-//       let month = d.getMonth()
-//       console.log(month)
-//       getMonthName(month)
-//  }
-
-//  clients.map((c) => {
-//   return(
-//     signUpMonth(c)
-//   )
-//  })
-
- function getMonthName(monthNumber) {
-  const date = new Date();
-  date.setMonth(monthNumber - 1);
-
-  let monthName = date.toLocaleString('en-US', { month: 'long' });
-  console.log(monthName)
-}
-
-
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
-  const data = {
-    datasets: [
-      {
-        backgroundColor: '#3F51B5',
-        barPercentage: 0.5,
-        barThickness: 12,
-        borderRadius: 4,
-        categoryPercentage: 0.5,
-        data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year',
-        maxBarThickness: 10
-      },
-      {
-        backgroundColor: '#EEEEEE',
-        barPercentage: 0.5,
-        barThickness: 12,
-        borderRadius: 4,
-        categoryPercentage: 0.5,
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year',
-        maxBarThickness: 10
-      }
-    ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 aug']
-  };
-
-  return(
-    <Bar data={data} />
+                  <TableRow
+                    hover
+                    key={client.id}
+                  >
+                    <TableCell>
+                      {client.age}
+                    </TableCell>
+                    <TableCell>
+                      {client.name}
+                    </TableCell>
+                    <TableCell>
+                      {client.created_at}
+                    </TableCell>
+                    <TableCell>
+                      {/* <SeverityPill
+                        color={(order.status === 'delivered' && 'success')
+                        || (order.status === 'refunded' && 'error')
+                        || 'warning'}
+                      >
+                        {order.status}
+                      </SeverityPill> */}
+                    </TableCell>
+                  </TableRow>
+                
+              )
+            }) : null}
+          </TableBody>
+        </Table>
+      </Box>
+    </PerfectScrollbar>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'flex-end',
+        p: 2
+      }}
+    >
+      <Button
+        color="primary"
+        endIcon={<ArrowRightIcon fontSize="small" />}
+        size="small"
+        variant="text"
+      >
+        View all
+      </Button>
+    </Box>
+  </Card>
   )
 }
 
