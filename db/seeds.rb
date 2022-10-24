@@ -46,7 +46,8 @@ Workout.create(
     trainer_id: 1,
     virtual: true,
     cost: 5,
-    client_id: 2
+    client_id: 2,
+    status: "scheduled"
     
 )
 
