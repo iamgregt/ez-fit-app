@@ -216,7 +216,7 @@ function Clients({clients}){
         </Box>
       <TablePagination
         component="div"
-        count={clientCount}
+        count={parseInt(clientCount) || 0}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
