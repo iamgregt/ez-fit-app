@@ -18,9 +18,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function FullScreenDialog({workout}) {
+function FullScreenDialog({workout, setWorkouts}) {
   const [open, setOpen] = useState(false);
   const [notes, setNotes] = useState("")
+  const targetWorkout = workout
+
+  const [target, setTarget] = useState(targetWorkout)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,7 +57,10 @@ function FullScreenDialog({workout}) {
         body: JSON.stringify(w)
     })
     .then(r => r.json())
-    .then(resp => console.log(resp))
+    .then(resp => {
+      setTarget(resp)
+      console.log(resp)
+    })
   }
 
   return (

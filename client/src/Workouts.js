@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FullScreenDialog from './components/fullscreen-dialog';
+import { useState } from 'react';
 
 const orders = [
   {
@@ -80,7 +81,9 @@ const orders = [
   }
 ];
 
-function Workouts({workouts}){
+function Workouts({workouts, setWorkouts}){
+
+
   return (
     <Card>
     <CardHeader title="Latest Workouts" />
@@ -143,7 +146,7 @@ function Workouts({workouts}){
                       {workout.status}
                     </TableCell>
                     <TableCell>
-                    <FullScreenDialog workout={workout} />
+                    <FullScreenDialog workout={workout} setWorkouts={setWorkouts} workouts={workouts}/>
                     </TableCell>
                   </TableRow>
                 

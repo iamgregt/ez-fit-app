@@ -39,6 +39,7 @@ function App() {
   
   const [clients, setClients] = useState()
   const [workouts, setWorkouts] = useState()
+  const [updated, setUpdated] = useState(false)
 
 const itemsList = [
   {
@@ -76,7 +77,7 @@ const itemsList = [
       console.log(resp)
       console.log('workouts loaded')
     })
-}, [])
+}, updated)
 
 
 
@@ -127,7 +128,7 @@ const itemsList = [
     <Routes>
       <Route path='/' element={<HomePage clients={clients} />} />
       <Route path="new-workout" element={<NewClientForm />} />
-      <Route path="/workouts" element ={<Workouts workouts={workouts} />} />
+      <Route path="/workouts" element ={<Workouts workouts={workouts} setWorkouts={setUpdated} />} />
       <Route path="/clients" element={<Clients clients={clients} />} />
     </Routes>
     </Box>
