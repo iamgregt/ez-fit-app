@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { Table, TableCell, TableHead, TextField, TableRow, TableBody } from '@mui/material';
 import { useState } from 'react';
+import { NavItem } from './nav-item';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -117,16 +118,20 @@ function FullScreenDialog({workout, setWorkouts}) {
             <TableHead>
                 <TableRow>
                     <TableCell>
-                        Previous Notes
+                        Comments
                     </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
-                <TableRow>
+                {workout.comments ? workout.comments.map((c) => {
+                  return(
+                    <TableRow>
                     <TableCell>
-                        {workout.notes ? workout.notes : "NO NOTES"}
+                      {c.body}
                     </TableCell>
-                </TableRow>
+                  </TableRow>
+                  )
+                }): null}
             </TableBody>
         </Table>
       </Dialog>
