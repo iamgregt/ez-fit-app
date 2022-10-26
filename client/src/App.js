@@ -15,6 +15,9 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import Workouts from './Workouts';
+import SignIn from './SignIn';
+
+
 
 
 const drawerWidth = 240;
@@ -34,6 +37,7 @@ const useStyles = makeStyles({
 
 
 function App() {
+  const [user, setUser] = useState(null)
   const classes = useStyles()
   let navigate = useNavigate()  
   
@@ -62,6 +66,14 @@ const itemsList = [
 
 
   useEffect(() => {
+    
+    fetch("/me").then((r) => {
+      if(r.ok) {
+        r.json().then((user) => setUser(user))
+        console.log('cool')  
+        console.log(user)
+      }})
+
     fetch('/clients')
     .then(r => r.json())
     .then(data => {
@@ -77,12 +89,18 @@ const itemsList = [
       console.log(resp)
       console.log('workouts loaded')
     })
-}, updated)
+}, [])
 
 
-
+if(!user){
+  console.log(user)
+  return(
+    <SignIn onLogin={setUser} />
+  )
+}else{
   return (
     <>
+ 
     <Box sx={{display: 'flex'}}>
       <CssBaseline />
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -130,11 +148,12 @@ const itemsList = [
       <Route path="new-workout" element={<NewClientForm />} />
       <Route path="/workouts" element ={<Workouts workouts={workouts} setWorkouts={setUpdated} />} />
       <Route path="/clients" element={<Clients clients={clients} />} />
+      <Route path="/sign-in" element={<SignIn onLogin={setUser} />} />
     </Routes>
     </Box>
     </Box>
     </>
-  );
+  );}
 }
 
 export default App;

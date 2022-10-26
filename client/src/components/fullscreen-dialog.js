@@ -127,7 +127,7 @@ function FullScreenDialog({workout, setWorkouts}) {
                   return(
                     <TableRow>
                     <TableCell>
-                      {c.body}
+                      {`User posted ${c.body}`}
                     </TableCell>
                   </TableRow>
                   )
