@@ -4,6 +4,7 @@ import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
 import Grid from '@mui/material/Unstable_Grid2'
+import "bootstrap/dist/css/bootstrap.min.css"
 import Clients from './Clients';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
