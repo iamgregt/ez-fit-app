@@ -19,12 +19,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function FullScreenDialog({workout, setWorkouts}) {
+function FullScreenDialog({workout, setWorkouts, workouts}) {
   const [open, setOpen] = useState(false);
-  const [notes, setNotes] = useState("")
+  const [newComment, setNewComment] = useState("")
   const targetWorkout = workout
 
   const [target, setTarget] = useState(targetWorkout)
+  const [commentCount, setCommentCount] = useState(workout.comments.length)
+
+  function changeCommentCount(){
+    setCommentCount((current) => (current + 1))
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -37,12 +42,16 @@ function FullScreenDialog({workout, setWorkouts}) {
   const handleClose = (e) => {
     setOpen(false);
     console.log(e)
+    console.log(newComment)
 
     const updatedWorkout = {
-        notes: notes ? notes.target.value : ""
+        body: newComment ? newComment.target.value : "",
+        workout_id: workout.id,
+        trainer_id: 1, 
+        client_id: 1
     }
 
-    if(updatedWorkout.notes !== ""){
+    if(updatedWorkout.body !== ""){
         handleUpdatedWorkout(updatedWorkout)
     }else{
         console.log('no changes')
@@ -50,8 +59,8 @@ function FullScreenDialog({workout, setWorkouts}) {
   };
 
   function handleUpdatedWorkout(w){
-    fetch(`/workouts/${workout.id}`, {
-        method: "PATCH",
+    fetch('/comments', {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -61,6 +70,7 @@ function FullScreenDialog({workout, setWorkouts}) {
     .then(resp => {
       setTarget(resp)
       console.log(resp)
+      changeCommentCount()
     })
   }
 
@@ -111,21 +121,21 @@ function FullScreenDialog({workout, setWorkouts}) {
           rows={4}
           placeholder="Enter Notes Here..."
           style={{width: '50%'}}
-          onChange={setNotes}
+          onChange={setNewComment}
         />
         </List>
         <Table>
             <TableHead>
                 <TableRow>
                     <TableCell>
-                        Comments
+                        Comments - {workout.comments ? workout.comments.length : null}
                     </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
                 {workout.comments ? workout.comments.map((c) => {
                   return(
-                    <TableRow>
+                    <TableRow key={c.id}>
                     <TableCell>
                       {`User posted ${c.body}`}
                     </TableCell>

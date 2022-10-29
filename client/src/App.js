@@ -43,7 +43,7 @@ function App() {
   let navigate = useNavigate()  
   
   const [clients, setClients] = useState()
-  const [workouts, setWorkouts] = useState()
+  const [workouts, setWorkouts] = useState([])
   const [updated, setUpdated] = useState(false)
 
 const itemsList = [
@@ -64,16 +64,31 @@ const itemsList = [
   }
 ]
 
+// useEffect(() => {
+//   fetch("/me").then((r) => {
+//     if(r.ok) {
+//       r.json().then((user) => setUser(user))
+//       console.log('cool')  
+//       console.log(user)
+//     }else{
+//       setTimeout(() => {
+//         console.log('not signed in')
+//         navigate('/sign-in')
+//       }, 2000)
+//     }
+//   })
+// }, [])
 
 
   useEffect(() => {
-    
-    fetch("/me").then((r) => {
+
+    fetch("/me")
+    .then(r => {
       if(r.ok) {
-        r.json().then((user) => setUser(user))
-        console.log('cool')  
-        console.log(user)
-      }})
+        r.json().then(user => setUser(user))
+      }
+    })
+
 
     fetch('/clients')
     .then(r => r.json())
@@ -93,12 +108,8 @@ const itemsList = [
 }, [])
 
 
-if(!user){
-  console.log(user)
-  return(
-    <SignIn onLogin={setUser} />
-  )
-}else{
+   if(!user) return <SignIn onLogin={setUser} />
+
   return (
     <>
  
@@ -145,16 +156,15 @@ if(!user){
     <Box component='main' sx={{ flexGrow: 1, p: 3, background: '#0e101c'}}>
       <Toolbar />
     <Routes>
-      <Route path='/' element={<HomePage clients={clients} />} />
+      <Route path='/' element={<HomePage workouts={workouts} clients={clients} />} />
       <Route path="new-workout" element={<NewClientForm />} />
-      <Route path="/workouts" element ={<Workouts workouts={workouts} setWorkouts={setUpdated} />} />
-      <Route path="/clients" element={<Clients clients={clients} />} />
-      <Route path="/sign-in" element={<SignIn onLogin={setUser} />} />
+      <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} user={user} workouts={workouts} setWorkouts={setWorkouts} />} />
+      <Route path="/clients" element={<Clients user={user} clients={clients} workouts={workouts} />} />
+      <Route path="/sign-in" element={<SignIn user={user} onLogin={setUser} />} />
     </Routes>
     </Box>
     </Box>
     </>
   );}
-}
 
 export default App;

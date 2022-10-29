@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2022_10_25_212640) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "_id"
-    t.integer "trainer_body"
-    t.integer "workoutid"
+    t.text "body"
+    t.integer "workout_id"
+    t.integer "trainer_id"
     t.integer "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

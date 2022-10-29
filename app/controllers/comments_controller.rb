@@ -38,7 +38,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_data
         render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 
-    def comment
+    def comment_params
         params.permit(:body, :trainer_id, :workout_id, :client_id)
     end
 

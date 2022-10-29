@@ -4,7 +4,7 @@ import Clients from './Clients';
 import Workouts from './Workouts';
 
 
-function HomePage({clients}){
+function HomePage({clients, workouts}){
     return(
         <Box component='main' sx={{flexGrow: 1, py: 8}}>
         <Container maxWidth={false}>
@@ -22,7 +22,7 @@ function HomePage({clients}){
               xl={9}
               xs={12}
             >
-              <Workouts clients={clients} />
+              {workouts ? <Workouts clients={clients} workouts={workouts}/> : null}
             </Grid>
           </Grid>
         </Container>
