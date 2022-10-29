@@ -158,7 +158,7 @@ const itemsList = [
     <Routes>
       <Route path='/' element={<HomePage workouts={workouts} clients={clients} />} />
       <Route path="/new-workout" element={<NewClientForm />} />
-      <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} user={user} workouts={workouts} setWorkouts={setWorkouts} />} />
+      <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} user={user} workouts={workouts} setWorkouts={setWorkouts} clients={clients} />} />
       <Route path="/clients" element={<Clients user={user} clients={clients} workouts={workouts} />} />
       <Route path="/sign-in" element={<SignIn user={user} onLogin={setUser} />} />
     </Routes>

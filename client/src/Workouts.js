@@ -83,14 +83,14 @@ const orders = [
   }
 ];
 
-function Workouts({workouts, setWorkouts}){
+function Workouts({workouts, setWorkouts, clients}){
 
 
 
   return (
     <Card>
     <CardHeader title="Latest Workouts" />
-    <NewWorkoutForm />
+    <NewWorkoutForm clients={clients}/>
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>
         <Table>

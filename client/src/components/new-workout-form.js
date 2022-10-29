@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { Table, TableCell, TableHead, TextField, TableRow, TableBody } from '@mui/material';
+import { Box, Table, TableCell, TableHead, TextField, TableRow, TableBody, Select, FormControl, InputLabel, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { NavItem } from './nav-item';
 
@@ -19,7 +19,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-function NewWorkoutForm(){
+function NewWorkoutForm({clients}){
 
     const [open, setOpen] = useState(false);
     const [newWorkout, setNewWorkout] = useState({
@@ -87,8 +87,27 @@ function NewWorkoutForm(){
               </Toolbar>
             </AppBar>
             <List>
-              <ListItem button>
-                <ListItemText primary="Client"secondary="Placeholder Text"  />
+           
+              <ListItem button style={{display: 'inline'}}>
+                <ListItemText  primary="Client"  />
+                <Box sx={{padding: '10px'}}>
+                <FormControl sx={{width:'30ch', padding: '5px'}}>
+                <InputLabel id="demo-simple-select-label">Client</InputLabel>
+                <Select
+                    value={5}
+                    label="Client"
+                    // onChange={handleChange}
+                >
+                    {clients && clients.map((c) => {
+                        return(
+                            <MenuItem key={c.id} value={c.id}>
+                                {c.name}
+                            </MenuItem>
+                        )
+                    })}
+                </Select>
+                </FormControl>
+                </Box>
               </ListItem>
               <Divider />
               <ListItem button>
