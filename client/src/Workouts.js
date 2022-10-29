@@ -18,6 +18,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FullScreenDialog from './components/fullscreen-dialog';
 import { useState } from 'react';
 import SignIn from './SignIn';
+import NewWorkoutForm from './components/new-workout-form';
 
 const orders = [
   {
@@ -89,6 +90,7 @@ function Workouts({workouts, setWorkouts}){
   return (
     <Card>
     <CardHeader title="Latest Workouts" />
+    <NewWorkoutForm />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>
         <Table>
