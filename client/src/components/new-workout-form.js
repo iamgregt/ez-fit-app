@@ -11,9 +11,14 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { Box, Table, TableCell, TableHead, TextField, TableRow, TableBody, Select, FormControl, InputLabel, MenuItem } from '@mui/material';
+import {Box, Table, TableCell, TableHead, TextField, TableRow, TableBody, Select, FormControl, InputLabel, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { NavItem } from './nav-item';
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
+import {LocalizationProvider} from '@mui/x-date-pickers'
+import {dayjs} from '@date-io/dayjs'
+import { DateTimePicker } from '@mui/x-date-pickers';
+import { Form } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -22,6 +27,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function NewWorkoutForm({clients}){
 
     const [open, setOpen] = useState(false);
+    const [start, setStart] = useState()
+    const [end, setEnd] = useState()
+    const [client, setClient] = useState('')
+    const [type, setType] = useState(false)
+
+
     const [newWorkout, setNewWorkout] = useState({
         name: "",
         date_time: null,
@@ -30,9 +41,14 @@ function NewWorkoutForm({clients}){
         cost: null
     })
 
+    const handleClientChange= (event) => {
+        setClient(event.target.value);
+      };
 
 
-
+    const handleTypeChange= (event) => {
+        setType(event.target.value)
+    }
 
 
     const handleClickOpen = () => {
@@ -47,10 +63,32 @@ function NewWorkoutForm({clients}){
         setOpen(false);
         console.log(e)
         console.log(newWorkout)
+        console.log(client)
+        console.log(type)
+        // console.log(start.$d)
+        // console.log(end)
     
         const workoutData = {
-            
+            name: "New Workout",
+            date_time: 9312022,
+            trainer_id: 1,
+            virtual: type,
+            cost: 5,
+            client_id: client,
+            status: "Pending",
+            notes: newWorkout.target.value
+
         }
+
+        fetch('/workouts', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(workoutData)
+        })
+        .then( r => r.json())
+        .then( data => console.log(data))
 
     
         
@@ -94,9 +132,9 @@ function NewWorkoutForm({clients}){
                 <FormControl sx={{width:'30ch', padding: '5px'}}>
                 <InputLabel id="demo-simple-select-label">Client</InputLabel>
                 <Select
-                    value={5}
+                    value={client}
                     label="Client"
-                    // onChange={handleChange}
+                    onChange={handleClientChange}
                 >
                     {clients && clients.map((c) => {
                         return(
@@ -110,13 +148,42 @@ function NewWorkoutForm({clients}){
                 </Box>
               </ListItem>
               <Divider />
-              <ListItem button>
-                <ListItemText
-                  primary="Workout Type"
-                  secondary="Placeholder Text"
+              <FormControl sx={{ width: '15ch',  paddingLeft: '5px', paddingRight: '5px'}}>
+              <InputLabel>Type</InputLabel>
+              <Select
+              value={type}
+              label="Type"
+              onChange={handleTypeChange}>
+                    <MenuItem value={true}>
+                    Virtual
+                    </MenuItem>
+                    <MenuItem value={false}>
+                    In-Person
+                    </MenuItem>
+                </Select>
+              </FormControl>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker
+                    renderInput={(props) => <TextField {...props} />}
+                    label="Start"
+                    value={start}
+                    onChange={(newValue) => {
+                    setStart(newValue);
+                    }}
                 />
-              </ListItem>
-              <TextField
+                </LocalizationProvider>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker
+                    renderInput={(props) => <TextField {...props} />}
+                    label="End"
+                    value={end}
+                    onChange={(newValue) => {
+                    setEnd(newValue);
+                    }}
+                />
+                </LocalizationProvider>
+            </List>
+            <TextField
               id="outlined-multiline-static"
               label="Notes"
               multiline
@@ -125,7 +192,6 @@ function NewWorkoutForm({clients}){
               style={{width: '50%'}}
               onChange={setNewWorkout}
             />
-            </List>
             <Table>
                 <TableHead>
                     <TableRow>

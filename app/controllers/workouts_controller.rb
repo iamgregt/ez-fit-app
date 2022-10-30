@@ -9,6 +9,10 @@ class WorkoutsController < ApplicationController
         render json: Workout.find_by(id:params[:id]), include: [:client, :trainer]
     end
 
+    def create
+        render json: Workout.create(workout_params)
+    end
+
     def update
         workout = Workout.find_by(id:params[:id])
         workout.update(workout_params)
@@ -24,6 +28,6 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.permit(:name, :date_time, :trainer_id, :virtual, :cost, :client_id, :status, :comments)
+        params.permit(:name, :date_time, :trainer_id, :virtual, :cost, :client_id, :status, :comments, :notes)
     end
 end
