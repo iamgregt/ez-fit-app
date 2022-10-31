@@ -47,14 +47,11 @@ function NewClientForm() {
       <input {...register("lastName")} placeholder="Last name" />
       <input type='email' {...register("email")} placeholder="Email Address" />
       <input type='password' {...register("password")} placeholder="Password" />
-      {/* <select {...register("category", { required: true })}>
-        <option value="">Select...</option>
-        <option value="A">Option A</option>
-        <option value="B">Option B</option>
-      </select>
-      <textarea {...register("aboutYou")} placeholder="About you" /> */}
+      <input type='number' placeholder='Weight (lbs)' />
       <input type="submit" />
     </form>
+    
+
   );
 }
 
