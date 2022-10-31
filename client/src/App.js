@@ -1,5 +1,5 @@
 import './App.css';
-import { AppBar, Box, Container, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText } from '@mui/material';
+import { AppBar, Box, Container, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText, Button } from '@mui/material';
 import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
@@ -72,6 +72,17 @@ const itemsList = [
 ]
 
 
+  function handleLogout(){
+    fetch('/logout',{
+      method: "DELETE"
+    })
+    .then(() => {
+      navigate('/')
+      setUser()
+    })
+  }
+
+
   useEffect(() => {
 
     fetch("/me")
@@ -138,6 +149,7 @@ const itemsList = [
             })}
           </List> */}
           <Divider />
+          <Button onClick={handleLogout}>Logout</Button>
         </Box>
       </Drawer>
     <Box component='main' sx={{ flexGrow: 1, p: 3}}>
