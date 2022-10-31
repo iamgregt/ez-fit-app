@@ -19,18 +19,19 @@ import Workouts from './Workouts';
 import SignIn from './SignIn';
 import ClientChart from './ClientChart';
 import { NavItem } from './components/nav-item';
-
+import { theme } from './theme/'
+ 
 
 
 
 const drawerWidth = 240;
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: red[500]
-    }
-  }
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: red[500]
+//     }
+//   }
+// });
 
 const useStyles = makeStyles({
   drawer: {
@@ -66,21 +67,6 @@ const itemsList = [
   }
 ]
 
-// useEffect(() => {
-//   fetch("/me").then((r) => {
-//     if(r.ok) {
-//       r.json().then((user) => setUser(user))
-//       console.log('cool')  
-//       console.log(user)
-//     }else{
-//       setTimeout(() => {
-//         console.log('not signed in')
-//         navigate('/sign-in')
-//       }, 2000)
-//     }
-//   })
-// }, [])
-
 
   useEffect(() => {
 
@@ -114,7 +100,8 @@ const itemsList = [
 
   return (
     <>
- 
+      
+      <ThemeProvider theme={theme}>
       <Box sx={{display: 'flex', backgroundColor: '#ccd2db'}}>
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
@@ -129,7 +116,7 @@ const itemsList = [
           <Box sx={{flexGrow: 1}}>
             {itemsList.map((i) => {
               return(
-                <NavItem title={i.text} />
+                <NavItem title={i.text} onClick={i.onClick} />
               )
             })}
           </Box>
@@ -160,6 +147,7 @@ const itemsList = [
     </Routes>
     </Box>
     </Box>
+      </ThemeProvider>
     </>
   );}
 
