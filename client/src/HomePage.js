@@ -79,6 +79,7 @@ const data = {
             >
               {workouts ? <Workouts clients={clients} workouts={workouts}/> : null}
             </Grid>
+            
           </Grid>
         </Container>
       </Box>

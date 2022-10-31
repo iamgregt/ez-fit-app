@@ -17,7 +17,9 @@ function NewClientForm() {
       const newUser = {
         name: `${data.firstName} ${data.lastName}`,
         email: data.email,
-        password: data.password
+        weight: data.weight, 
+        total_workouts: 0,
+        age: data.age
       }
 
       fetch('/clients', {
@@ -45,9 +47,9 @@ function NewClientForm() {
       <FormHeader />
       <input {...register("firstName")} placeholder="First name" />
       <input {...register("lastName")} placeholder="Last name" />
+      <input type='age' {...register("age")} placeholder='Age'/>
       <input type='email' {...register("email")} placeholder="Email Address" />
-      <input type='password' {...register("password")} placeholder="Password" />
-      <input type='number' placeholder='Weight (lbs)' />
+      <input type='number' {...register("weight")} placeholder='Weight (lbs)' />
       <input type="submit" />
     </form>
     
