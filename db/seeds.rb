@@ -14,15 +14,14 @@ Trainer.create(
     in_person: true,
     virtual: true,
     accepting_clients: true,
-    workouts_sold: 0
+    workouts_sold: 0,
+    password: "test"
 )
 
 Client.create(
     name: "Michael Jordan", 
     email: "testemail@gmail.com", 
-    password: "test", 
     age: 30, 
-    location: 80202, 
     total_workouts: 0, 
     height: 93, 
     weight: 235
@@ -32,9 +31,7 @@ Client.create(
 Client.create(
     name: "Michael Jordan2", 
     email: "testdsemail@gmail.com", 
-    password: "test", 
     age: 30, 
-    location: 80202, 
     total_workouts: 0, 
     height: 93, 
     weight: 235

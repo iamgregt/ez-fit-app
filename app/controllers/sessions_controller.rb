@@ -5,16 +5,16 @@ class SessionsController < ApplicationController
 
 
     def create
-        client = Client.find_by(email: params[:email])
-        if client&.authenticate(params[:password])
-            session[:client_id] = client.id
-            render json: client, status: :created
+        trainer = Trainer.find_by(email: params[:email])
+        if trainer&.authenticate(params[:password])
+            session[:trainer_id] = trainer.id
+            render json: trainer, status: :created
         else
         render json: {error: "Invalid username or password"}, status: :unauthorized
         end 
     end
     def destroy
-        session.delete :client_id
+        session.delete :trainer_id
         head :no_content
       end
 end

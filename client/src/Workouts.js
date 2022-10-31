@@ -90,7 +90,7 @@ function Workouts({workouts, setWorkouts, clients}){
   return (
     <Card>
     <CardHeader title="Latest Workouts" />
-    <NewWorkoutForm clients={clients}/>
+    <NewWorkoutForm clients={clients} setWorkouts={setWorkouts}/>
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>
         <Table>

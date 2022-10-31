@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :comments
   resources :workouts
-  get "/me", to: "clients#show"
+  get "/me", to: "trainers#show"
   get "/clients/clientcount", to: "clients#clients"
   resources :clients
   resources :trainers

@@ -19,12 +19,13 @@ import {LocalizationProvider} from '@mui/x-date-pickers'
 import {dayjs} from '@date-io/dayjs'
 import { DateTimePicker } from '@mui/x-date-pickers';
 import { Form } from 'react-router-dom';
+import { da } from 'date-fns/locale';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-function NewWorkoutForm({clients}){
+function NewWorkoutForm({clients, setWorkouts}){
 
     const [open, setOpen] = useState(false);
     const [start, setStart] = useState()
@@ -88,9 +89,12 @@ function NewWorkoutForm({clients}){
             body: JSON.stringify(workoutData)
         })
         .then( r => r.json())
-        .then( data => console.log(data))
-
-    
+        .then( data => {
+          console.log(data)
+          window.location.reload()
+        })
+        
+        
         
       };
 

@@ -37,7 +37,7 @@ function SignIn({onLogin}) {
         password
       }
 
-      fetch('/clients', {
+      fetch('/trainers', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -8,11 +8,11 @@ class ClientsController < ApplicationController
     end
 
     def show
-        client = Client.find_by(id: session[:client_id])
+        client = Client.find_by(id: params[:id])
         if client
             render json: client
         else
-            render json: { error: "Not authorized" }, status: :unauthorized
+            render json: { error: "No user" }, status: :unauthorized
         end
     end
 
@@ -38,7 +38,7 @@ class ClientsController < ApplicationController
     private
 
     def client_params
-        params.permit(:name, :email, :years_training, :location, :in_person, :virtual, :accepting_clients, :workouts_sold, :password)
+        params.permit(:name, :email, :years_training, :in_person, :virtual, :accepting_clients, :workouts_sold)
     end
 
     def invalid_data(invalid)

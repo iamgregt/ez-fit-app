@@ -7,8 +7,12 @@ class TrainersController < ApplicationController
     end
 
     def show
-        trainer = Trainer.find_by(id: params[:id])
-        render json: trainer
+        trainer = Trainer.find_by(id: session[:trainer_id])
+        if trainer
+            render json: trainer
+        else
+            render json: { error: "Not authorized" }, status: :unauthorized
+        end
     end
 
     def update
@@ -25,6 +29,6 @@ class TrainersController < ApplicationController
     private
 
     def trainer_params
-        params.permit(:name, :years_training, :location, :in_person, :virtual, :accepting_clients, :workout_sold)
+        params.permit(:name, :years_training, :location, :in_person, :virtual, :accepting_clients, :workout_sold, :password)
     end
 end
