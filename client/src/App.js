@@ -9,17 +9,16 @@ import Clients from './Clients';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import NewClientForm from './NewClientForm';
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import Workouts from './Workouts';
 import SignIn from './SignIn';
-import ClientChart from './ClientChart';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { NavItem } from './components/nav-item';
 import { theme } from './theme/'
+import Account from './Account';
  
 export const UserContext = createContext()
 
@@ -64,6 +63,11 @@ const itemsList = [
     text: "Workouts",
     icon: <FitnessCenterIcon />,
     onClick: () => navigate('/workouts')
+  },
+  {
+    text: "Account",
+    icon: <ManageAccountsIcon />,
+    onClick: () => navigate('/account')
   }
 ]
 
@@ -146,7 +150,7 @@ const itemsList = [
       <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} workouts={workouts} setWorkouts={setWorkouts} clients={clients} />} />
       <Route path="/clients" element={<Clients clients={clients} workouts={workouts} />} />
       <Route path="/sign-in" element={<SignIn onLogin={setUser} />} />
-      
+      <Route path='/account' element={<Account />} />
     </Routes>
     </UserContext.Provider>
     </Box>

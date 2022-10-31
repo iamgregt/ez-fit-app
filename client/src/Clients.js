@@ -94,7 +94,7 @@ function Clients({clients}){
 
     return(
         <>
-        <Box container sx={{padding: '10px'}}>
+        <Box container='true' sx={{padding: '10px'}}>
         <Button onClick={() => navigate('/new-client')}>Add A Client</Button>
         </Box>
         <Card>
