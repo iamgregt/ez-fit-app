@@ -18,8 +18,6 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import {LocalizationProvider} from '@mui/x-date-pickers'
 import {dayjs} from '@date-io/dayjs'
 import { DateTimePicker } from '@mui/x-date-pickers';
-import { Form } from 'react-router-dom';
-import { da } from 'date-fns/locale';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -74,10 +72,8 @@ function NewWorkoutForm({clients, setWorkouts}){
             date_time: 9312022,
             trainer_id: 1,
             virtual: type,
-            cost: 5,
             client_id: client,
-            status: "Pending",
-            notes: newWorkout.target.value
+            status: "Pending"
 
         }
 

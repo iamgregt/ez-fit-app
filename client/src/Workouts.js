@@ -16,9 +16,10 @@ import {
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FullScreenDialog from './components/fullscreen-dialog';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import SignIn from './SignIn';
 import NewWorkoutForm from './components/new-workout-form';
+import { UserContext } from './App';
 
 const orders = [
   {
@@ -84,10 +85,11 @@ const orders = [
 ];
 
 function Workouts({workouts, setWorkouts, clients}){
-
-
+  const user = useContext(UserContext)
+  console.log(user)
 
   return (
+    
     <Card>
     <CardHeader title="Latest Workouts" />
     <NewWorkoutForm clients={clients} setWorkouts={setWorkouts}/>

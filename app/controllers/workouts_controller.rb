@@ -28,6 +28,6 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.permit(:name, :date_time, :trainer_id, :virtual, :client_id, :status, :comments, :notes)
+        params.permit(:name, :date_time, :trainer_id, :virtual, :client_id, :status)
     end
 end

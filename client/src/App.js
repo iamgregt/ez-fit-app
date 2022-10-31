@@ -6,7 +6,7 @@ import { red }from '@mui/material/colors/';
 import Grid from '@mui/material/Unstable_Grid2'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Clients from './Clients';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
@@ -21,7 +21,7 @@ import ClientChart from './ClientChart';
 import { NavItem } from './components/nav-item';
 import { theme } from './theme/'
  
-
+export const UserContext = createContext()
 
 
 const drawerWidth = 240;
@@ -97,7 +97,7 @@ const itemsList = [
 
 
    if(!user) return <SignIn onLogin={setUser} />
-
+  console.log(user)
   return (
     <>
       
@@ -116,7 +116,7 @@ const itemsList = [
           <Box sx={{flexGrow: 1}}>
             {itemsList.map((i) => {
               return(
-                <NavItem title={i.text} onClick={i.onClick} />
+                <NavItem title={i.text} onClick={i.onClick} key={i.text} />
               )
             })}
           </Box>
@@ -138,13 +138,17 @@ const itemsList = [
       </Drawer>
     <Box component='main' sx={{ flexGrow: 1, p: 3}}>
       <Toolbar />
+      <UserContext.Provider value={user}>
     <Routes>
+      
       <Route path='/' element={<HomePage workouts={workouts} clients={clients} />} />
       <Route path="/new-client" element={<NewClientForm />} />
-      <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} user={user} workouts={workouts} setWorkouts={setWorkouts} clients={clients} />} />
-      <Route path="/clients" element={<Clients user={user} clients={clients} workouts={workouts} />} />
-      <Route path="/sign-in" element={<SignIn user={user} onLogin={setUser} />} />
+      <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} workouts={workouts} setWorkouts={setWorkouts} clients={clients} />} />
+      <Route path="/clients" element={<Clients clients={clients} workouts={workouts} />} />
+      <Route path="/sign-in" element={<SignIn onLogin={setUser} />} />
+      
     </Routes>
+    </UserContext.Provider>
     </Box>
     </Box>
       </ThemeProvider>
