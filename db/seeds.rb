@@ -22,8 +22,7 @@ Client.create(
     name: "Michael Jordan", 
     email: "testemail@gmail.com", 
     age: 30, 
-    total_workouts: 0, 
-    height: 93, 
+    total_workouts: 0,  
     weight: 235
 )
 
@@ -33,7 +32,6 @@ Client.create(
     email: "testdsemail@gmail.com", 
     age: 30, 
     total_workouts: 0, 
-    height: 93, 
     weight: 235
 )
 

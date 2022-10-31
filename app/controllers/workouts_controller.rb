@@ -2,7 +2,13 @@ class WorkoutsController < ApplicationController
     wrap_parameters format: []
     
     def index
-        render json: Workout.all, include: [:client, :trainer]
+        if params[:trainer_id]
+        trainer = Trainer.find(params[:trainer_id])
+        workouts = trainer.workouts
+        else
+        workouts = Workout.all
+        end
+        render json: workouts, include: :trainer
     end
 
     def show 

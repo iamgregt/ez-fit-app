@@ -30,6 +30,17 @@ class TrainersController < ApplicationController
         head :no_content
     end
 
+    def workouts_index
+        trainer = Trainer.find(params[:trainer_id])
+        workouts = trainer.workouts
+        render json: workouts, include: :trainer
+    end
+
+    def client
+        workout = Workout.find(params[:id])
+        render json: client, include: :trainer
+    end
+
     private
 
     def trainer_params
