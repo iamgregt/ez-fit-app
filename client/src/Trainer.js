@@ -18,7 +18,7 @@ const [trainers, setTrainers] = useState("")
                 {trainers ? trainers.map((t) => {
                     return(
                         <li key={t.id}>
-                            {t.name}
+                            {t.first_name}
                         </li>
                     )
                 }) : null}
