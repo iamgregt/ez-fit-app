@@ -60,9 +60,11 @@ function AccountProfile(){
       <Button
         color="primary"
         fullWidth
-        variant="text"
+        variant="outlined"
+        component="label"
       >
-        Upload picture
+        Upload pictures
+        <input type='file' hidden />
       </Button>
     </CardActions>
   </Card>
