@@ -153,14 +153,27 @@ function SignIn({onLogin}) {
                     <a href="#">Sign In</a>
                   </span>
                 </div>
+              <div className="form-group mt-3">
+                <label>First Name</label>
+                <input 
+                  onChange={e => setFirstName(e.target.value)}
+                  value={firstName}
+                  required
+                  type='text'
+                  className="form-control mt-1"
+                  placeholder='First Name'
+                 />
+                 <label>Last Name</label>
+                 <input 
+                  onChange={e => setLastName(e.target.value)}
+                  value={lastName}
+                  required
+                  type='text'
+                  className="form-control mt-1"
+                  placeholder='Last Name'
+                 />
+              </div>
           <div className="form-group mt-3">
-            <label>First Name</label>
-            <input
-            onChange={e => setFirstName(e.target.value)}
-            value={firstName}
-            required
-            type='text'
-            className='form-control mt-1'> First Name</input>
             <label>Email</label>
             <input
             onChange={e => setEmail(e.target.value)}
