@@ -62,26 +62,7 @@ function Clients({clients}){
     };
   
 
-    useEffect(() => {
-        fetch('/clients/clientcount')
-        .then(r => r.json())
-        .then(resp => {
-            setClientCount(resp)
-        })
-    }, [])
 
-    const data = {
-        datasets: [
-          {
-            data: [clientCount, 15, 22],
-            backgroundColor: ['#3F51B5', '#e53935', '#FB8C00'],
-            borderWidth: 8,
-            borderColor: '#FFFFFF',
-            hoverBorderColor: '#FFFFFF'
-          }
-        ],
-        labels: ['Cient Count', 'Tablet', 'Mobile']
-      };
 
       const options = {
         animation: false,
@@ -110,21 +91,6 @@ function Clients({clients}){
 
     return(
         <>
-        {/* <Card sx={{height: '100%'}}>
-            <CardContent>
-                <Grid container spacing={3} sx={{ justifyContent: 'space-between'}}>
-                    <Grid>
-                        <Typography color='textSecondary' gutterBottom variant='overline'>
-                            Client Count
-                        </Typography>
-                        <Typography color='textPrimary' variant='h4'>
-                            {clientCount}
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </CardContent>
-            <Doughnut data={data} />
-        </Card> */}
         <Card>
         <Box sx={{ minWidth: 1050 }}>
           <Table>

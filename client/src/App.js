@@ -1,5 +1,5 @@
 import './App.css';
-import { AppBar, Box, Container, CssBaseline, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText } from '@mui/material';
+import { AppBar, Box, Container, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText } from '@mui/material';
 import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
@@ -17,6 +17,7 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import Workouts from './Workouts';
 import SignIn from './SignIn';
+import ClientChart from './ClientChart';
 
 
 
@@ -113,8 +114,7 @@ const itemsList = [
   return (
     <>
  
-    <Box sx={{display: 'flex'}}>
-      <CssBaseline />
+      <Box sx={{display: 'flex', backgroundColor: '#ccd2db'}}>
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
           <Typography variant='h6' noWrap component={'div'}>
@@ -123,7 +123,7 @@ const itemsList = [
         </Toolbar>
       </AppBar>
       <Drawer variant='permanent' sx={{width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: {width: drawerWidth, boxSizing: 'border-box'}}}>
-        <Toolbar />
+        <Toolbar />       
         <Box sx={{overflow: 'auto'}} >
           <List>
             {itemsList.map((item) => {
@@ -153,7 +153,7 @@ const itemsList = [
           </List>
         </Box>
       </Drawer>
-    <Box component='main' sx={{ flexGrow: 1, p: 3, background: '#0e101c'}}>
+    <Box component='main' sx={{ flexGrow: 1, p: 3}}>
       <Toolbar />
     <Routes>
       <Route path='/' element={<HomePage workouts={workouts} clients={clients} />} />
