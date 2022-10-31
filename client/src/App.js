@@ -18,6 +18,7 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import Workouts from './Workouts';
 import SignIn from './SignIn';
 import ClientChart from './ClientChart';
+import { NavItem } from './components/nav-item';
 
 
 
@@ -124,8 +125,15 @@ const itemsList = [
       </AppBar>
       <Drawer variant='permanent' sx={{width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: {width: drawerWidth, boxSizing: 'border-box'}}}>
         <Toolbar />       
-        <Box sx={{overflow: 'auto'}} >
-          <List>
+        <Box sx={{overflow: 'auto', backgroundColor: 'rgb(17, 24, 39);', height: '100%'}} >
+          <Box sx={{flexGrow: 1}}>
+            {itemsList.map((i) => {
+              return(
+                <NavItem title={i.text} />
+              )
+            })}
+          </Box>
+          {/* <List>
             {itemsList.map((item) => {
               const {text, icon, onClick} = item
               return (
@@ -137,20 +145,8 @@ const itemsList = [
               </ListItem>
               )
             })}
-          </List>
+          </List> */}
           <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
         </Box>
       </Drawer>
     <Box component='main' sx={{ flexGrow: 1, p: 3}}>

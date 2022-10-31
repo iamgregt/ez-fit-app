@@ -63,7 +63,7 @@ const data = {
         
         <Container maxWidth={false}>
           <Grid container spacing={3} style={{display: 'flex', flexFlow: 'row wrap', marginTop: '-24px', width: 'calc(100% + 24px)', marginLeft: '-24px', boxSizing: 'border-box'}}>
-          <Grid lg={4}
+          <Grid item lg={4}
               md={6}
               xl={3}
               xs={12}>
@@ -80,9 +80,6 @@ const data = {
               {workouts ? <Workouts clients={clients} workouts={workouts}/> : null}
             </Grid>
           </Grid>
-        </Container>
-        <Container style={{ background: '#0e101c', borderStyle: 'solid', borderWidth: '5px' }}>
-          {/* <WorkoutForm /> */}
         </Container>
       </Box>
     )
