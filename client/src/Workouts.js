@@ -87,6 +87,11 @@ const orders = [
 function Workouts({workouts, setWorkouts, clients}){
   const user = useContext(UserContext)
   console.log(user)
+  let myWorkouts = []
+  if(user){
+    myWorkouts = workouts.filter((w) => w.trainer_id == user.id)
+    console.log(myWorkouts)
+  }
 
   return (
     
@@ -129,7 +134,7 @@ function Workouts({workouts, setWorkouts, clients}){
             </TableRow>
           </TableHead>
           <TableBody>
-            {workouts ? workouts.map((workout) => {
+            {myWorkouts ? myWorkouts.map((workout) => {
               return(
   
                   <TableRow
