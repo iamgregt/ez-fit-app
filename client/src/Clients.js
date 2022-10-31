@@ -1,8 +1,9 @@
-import { Avatar, Box, CardContent, Typography, Card, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination,TableRow, } from "@mui/material";
+import { Avatar, Box, CardContent, Typography, Card, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination,TableRow, Button, } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'
 import { useEffect, useState } from "react";
 import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import {useNavigate} from 'react-router-dom'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,6 +16,8 @@ function Clients({clients}){
     //         clientCount: prevState.clientCount + 1
     //     })) 
     // }
+
+    let navigate = useNavigate() 
 
     const [clientCount, setClientCount] = useState()
     const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -91,6 +94,9 @@ function Clients({clients}){
 
     return(
         <>
+        <Box container sx={{padding: '10px'}}>
+        <Button onClick={() => navigate('/new-client')}>Add A Client</Button>
+        </Box>
         <Card>
         <Box sx={{ minWidth: 1050 }}>
           <Table>
