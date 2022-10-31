@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_31_151147) do
+ActiveRecord::Schema.define(version: 2022_10_31_151303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2022_10_31_151147) do
 
   create_table "trainers", force: :cascade do |t|
     t.string "email"
-    t.integer "location"
     t.boolean "in_person"
     t.boolean "virtual"
     t.boolean "accepting_clients"
