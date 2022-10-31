@@ -35,8 +35,11 @@ function SignIn({onLogin}) {
 
       
       const user = {
+        first_name: firstName,
+        last_name: lastName,
         email,
-        password
+        password,
+        workouts_sold: 0
       }
 
       fetch('/trainers', {

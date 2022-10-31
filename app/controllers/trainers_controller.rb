@@ -15,6 +15,10 @@ class TrainersController < ApplicationController
         end
     end
 
+    def create
+        render json: Trainer.create!(trainer_params)
+    end
+
     def update
         trainer = Trainer.find_by(id: params[:id])
         trainer.update(trainer_params)
@@ -29,6 +33,6 @@ class TrainersController < ApplicationController
     private
 
     def trainer_params
-        params.permit(:name, :years_training, :location, :in_person, :virtual, :accepting_clients, :workout_sold, :password)
+        params.permit(:first_name, :last_name, :email, :workouts_sold, :password)
     end
 end
