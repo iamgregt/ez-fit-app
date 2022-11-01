@@ -55,7 +55,6 @@ function TopSellers(){
               </ListItemAvatar>
               <ListItemText
                 primary={`${seller.first_name} ${seller.last_name}  has sold ${seller.workouts_sold} workouts!`}
-                // secondary={`Updated ${formatDistanceToNow(seller.updatedAt)}`}
               />
               <IconButton
                 edge="end"
