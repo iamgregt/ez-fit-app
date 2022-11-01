@@ -6,7 +6,7 @@ import AccountProfileDetails from './components/account-profile-details';
 
 
 
-function Account(){
+function Account({setUser}){
 
     const user = useContext(UserContext)
 
@@ -44,7 +44,7 @@ function Account(){
                 md={6}
                 xs={12}
               >
-                <AccountProfileDetails />
+                <AccountProfileDetails setUser={setUser} />
               </Grid>
             </Grid>
           </Container>

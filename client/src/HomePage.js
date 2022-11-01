@@ -34,7 +34,8 @@ function HomePage({clients, workouts}){
           <Grid item lg={4}
               md={6}
               xl={3}
-              xs={12}>
+              xs={12}
+              sx={{maxWidth: true}}>
               
           <ClientChart />
         </Grid>

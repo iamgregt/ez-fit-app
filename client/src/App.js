@@ -162,7 +162,7 @@ const itemsList = [
       <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} workouts={workouts} setWorkouts={setWorkouts} clients={clients} />} />
       <Route path="/clients" element={<Clients clients={clients} workouts={workouts} />} />
       <Route path="/sign-in" element={<SignIn onLogin={setUser} />} />
-      <Route path='/account' element={<Account />} />
+      <Route path='/account' element={<Account setUser={setUser} />} />
     </Routes>
     </UserContext.Provider>
     </Box>

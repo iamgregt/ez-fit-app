@@ -10,6 +10,7 @@ import {
   TextField
 } from '@mui/material';
 import { UserContext } from '../App';
+import DeleteAccount from './delete-account-popup';
 
 
 const states = [
@@ -30,6 +31,7 @@ const states = [
   function AccountProfileDetails(props){
 
     const user = useContext(UserContext)
+    const [active, setActive] = useState(false)
 
     const [values, setValues] = useState({
         first_name: user.first_name,
@@ -67,6 +69,7 @@ const states = [
             window.location.reload()
         })
       }
+
     
       return (
         <form
@@ -130,6 +133,11 @@ const states = [
                     value={values.email}
                     variant="outlined"
                   />
+                </Grid>
+                <Grid
+                item
+                >
+                  <DeleteAccount setUser={props.setUser} />
                 </Grid>
                 {/* <Grid
                   item
