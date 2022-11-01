@@ -39,7 +39,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_data
     end
 
     def comment_params
-        params.permit(:body, :trainer_id, :workout_id, :client_id)
+        params.permit(:body, :trainer_id, :workout_id)
     end
 
 end

@@ -30,15 +30,9 @@ function NewWorkoutForm({clients, setWorkouts}){
     const [end, setEnd] = useState()
     const [client, setClient] = useState('')
     const [type, setType] = useState(false)
+    const [comment, setComment] = useState('')
 
 
-    const [newWorkout, setNewWorkout] = useState({
-        name: "",
-        date_time: null,
-        trainer_id: 1,
-        virtual: null, 
-        cost: null
-    })
 
     const handleClientChange= (event) => {
         setClient(event.target.value);
@@ -61,9 +55,9 @@ function NewWorkoutForm({clients, setWorkouts}){
       const handleClose = (e) => {
         setOpen(false);
         console.log(e)
-        console.log(newWorkout)
         console.log(client)
         console.log(type)
+        console.log(comment)
         // console.log(start.$d)
         // console.log(end)
     
@@ -77,6 +71,8 @@ function NewWorkoutForm({clients, setWorkouts}){
 
         }
 
+        
+
         fetch('/workouts', {
             method: "POST",
             headers: {
@@ -87,7 +83,24 @@ function NewWorkoutForm({clients, setWorkouts}){
         .then( r => r.json())
         .then( data => {
           console.log(data)
-          window.location.reload()
+          const newComment = {
+            body: comment.target.value,
+            workout_id: data.id,
+            trainer_id: data.trainer_id
+            
+          }
+          fetch('/comments', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newComment)
+          })
+          .then(r => r.json())
+          .then(finishedData => {
+            console.log(finishedData)
+          })
+          // window.location.reload()
         })
         
         
@@ -185,12 +198,12 @@ function NewWorkoutForm({clients, setWorkouts}){
             </List>
             <TextField
               id="outlined-multiline-static"
-              label="Notes"
+              label="Comments"
               multiline
               rows={4}
-              placeholder="Enter Notes Here..."
+              placeholder="Enter Comments Here..."
               style={{width: '50%'}}
-              onChange={setNewWorkout}
+              onChange={setComment}
             />
             <Table>
                 <TableHead>
