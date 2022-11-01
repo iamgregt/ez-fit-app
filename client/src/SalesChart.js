@@ -23,6 +23,11 @@ import {
 
 export const SalesChart = (props) => {
   const theme = useTheme();
+  const months = [ "January", "February", "March", "April", "May", "June", 
+  "July", "August", "September", "October", "November", "December" ]
+  
+  const current = new Date()
+  const date = current.getMonth()
 
   const data = {
     datasets: [
@@ -47,7 +52,7 @@ export const SalesChart = (props) => {
         maxBarThickness: 10
       }
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 aug']
+    labels: [ months[date - 5] , months[date - 4], months[date - 3], months[date - 2], months[date - 1], months[date], months[date + 1]]
   };
 
   const options = {
