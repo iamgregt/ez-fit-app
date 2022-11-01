@@ -6,44 +6,56 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 Trainer.create(
-    name: "Greg Taylor",
+    first_name: "Greg",
+    last_name: "Taylor",
     email: "taylor.gregory901@gmail.com",
-    years_training: 3,
-    location: 38127, 
-    in_person: true,
-    virtual: true,
-    accepting_clients: true,
     workouts_sold: 0,
     password: "test"
 )
 
-Client.create(
-    name: "Michael Jordan", 
-    email: "testemail@gmail.com", 
-    age: 30, 
-    total_workouts: 0,  
-    weight: 235
+12.times do 
+    Trainer.create(
+    first_name: Faker::Name.first_name ,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.safe_email,
+    workouts_sold: Faker::Number.between(from: 0, to: 12),
+    password: "test"
 )
+end
 
 
-Client.create(
-    name: "Michael Jordan2", 
-    email: "testdsemail@gmail.com", 
-    age: 30, 
-    total_workouts: 0, 
-    weight: 235
-)
 
-Workout.create(
+
+
+40.times do
+   
+
+    Client.create(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        age: Faker::Number.between(from: 18, to: 35),
+        total_workouts: Faker::Number.between(from: 0, to: 12),
+        weight: Faker::Number.between(from: 135, to: 275),
+        avatar: Faker::Avatar.image
+
+    )
+
+
+end
+
+200.times do
+    Workout.create(
     name: "Leg Workout",
     date_time: 02022022,
-    trainer_id: 1,
-    virtual: true,
-    cost: 5,
-    client_id: 2,
+    trainer_id: Faker::Number.between(from: 1, to: 13),
+    virtual: Faker::Boolean.boolean,
+    client_id: Faker::Number.between(from: 1, to: 40),
     status: "scheduled"
     
 )
+
+end
 
 puts "done seeding"

@@ -38,7 +38,7 @@ class ClientsController < ApplicationController
     private
 
     def client_params
-        params.permit(:name, :email, :total_workouts, :weight, :age)
+        params.permit(:name, :email, :total_workouts, :weight, :age, :avatar)
     end
 
     def invalid_data(invalid)

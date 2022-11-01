@@ -1,9 +1,10 @@
-import { Avatar, Box, CardContent, Typography, Card, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination,TableRow, Button, } from "@mui/material";
+import { Avatar, Box, CardContent, Typography, Card, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination,TableRow, Button, TableContainer, } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'
 import { useEffect, useState } from "react";
 import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import {useNavigate} from 'react-router-dom'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -99,20 +100,10 @@ function Clients({clients}){
         </Box>
         <Card>
         <Box sx={{ minWidth: 1050 }}>
-          <Table>
+         <TableContainer sx={{ height: 950 }}>
+         <Table sx={{height: 'max-content'}}>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedCustomerIds.length === clientCount}
-                    color="primary"
-                    indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < clients.length
-                    }
-                    onChange={handleSelectAll}
-                  />
-                </TableCell>
                 <TableCell>
                   Name
                 </TableCell>
@@ -131,20 +122,13 @@ function Clients({clients}){
               </TableRow>
             </TableHead>
             <TableBody>
-              { clients ? clients.map((customer) => {
+              { clients ? clients.map((client) => {
                 return(
                   <TableRow
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  key={client.id}
+                  selected={selectedCustomerIds.indexOf(client.id) !== -1}
                 >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
-                      value="true"
-                    />
-                  </TableCell>
                   <TableCell>
                     <Box
                       sx={{
@@ -153,7 +137,7 @@ function Clients({clients}){
                       }}
                     >
                       <Avatar
-                        src={customer.avatarUrl}
+                        src={client.avatar}
                         sx={{ mr: 2 }}
                       >
                         What
@@ -162,18 +146,18 @@ function Clients({clients}){
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.name}
+                        {client.name}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {client.email}
                   </TableCell>
                   <TableCell>
                     {/* {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`} */}
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
+                    {client.phone}
                   </TableCell>
                   {/* <TableCell>
                     {format(customer.createdAt, 'dd/MM/yyyy')}
@@ -185,8 +169,9 @@ function Clients({clients}){
               ) : null}
             </TableBody>
           </Table>
+         </TableContainer>
         </Box>
-      <TablePagination
+      {/* <TablePagination
         component="div"
         count={parseInt(clientCount) || 0}
         onPageChange={handlePageChange}
@@ -194,7 +179,7 @@ function Clients({clients}){
         page={page}
         rowsPerPage={limit}
         rowsPerPageOptions={[5, 10, 25]}
-      />
+      /> */}
     </Card>
         </>
         
