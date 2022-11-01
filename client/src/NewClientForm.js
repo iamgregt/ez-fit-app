@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import {useState } from 'react'
 import FormHeader from "./FormHeader";
+import { useNavigate } from "react-router-dom";
 import './NewClientForm.css'
 
 function NewClientForm() {
@@ -8,6 +9,7 @@ function NewClientForm() {
     const [data, setData] = useState("");
     const [error, setError] = useState(false)
 
+    let navigate = useNavigate()
     
   return (
     <form onSubmit={handleSubmit((data) => {
@@ -32,7 +34,10 @@ function NewClientForm() {
       .then(r => {
       if(r.ok){
         r.json().then(user => {
+          navigate('/clients')
+          window.location.reload()
           console.log(user)
+          
         })
       }else{
         r.json().then(errorData => {
