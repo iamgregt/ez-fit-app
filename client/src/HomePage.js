@@ -54,7 +54,7 @@ function HomePage({clients, workouts}){
             xl={9}
             xs={12}
           >
-            <SalesChart />
+            <SalesChart workouts={workouts} />
           </Grid>
           </Grid>
         <Grid></Grid>

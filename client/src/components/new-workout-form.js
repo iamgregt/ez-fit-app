@@ -23,6 +23,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+  const months = [ "January", "February", "March", "April", "May", "June", 
+  "July", "August", "September", "October", "November", "December" ]
+
+
 function NewWorkoutForm({clients, setWorkouts}){
 
     const [open, setOpen] = useState(false);
@@ -58,12 +62,14 @@ function NewWorkoutForm({clients, setWorkouts}){
         console.log(client)
         console.log(type)
         console.log(comment)
-        // console.log(start.$d)
-        // console.log(end)
+        console.log(start)
+        
+        const month = start.$M
+        
     
         const workoutData = {
             name: "New Workout",
-            date_time: 9312022,
+            date_time: month,
             trainer_id: 1,
             virtual: type,
             client_id: client,
@@ -84,7 +90,7 @@ function NewWorkoutForm({clients, setWorkouts}){
         .then( data => {
           console.log(data)
           const newComment = {
-            body: comment.target.value,
+            body: comment ? comment.target.value : null,
             workout_id: data.id,
             trainer_id: data.trainer_id
             
@@ -100,7 +106,7 @@ function NewWorkoutForm({clients, setWorkouts}){
           .then(finishedData => {
             console.log(finishedData)
           })
-          window.location.reload()
+          // window.location.reload()
         })
         
         

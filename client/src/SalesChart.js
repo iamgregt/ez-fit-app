@@ -11,6 +11,8 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
+import { useNavigate } from 'react-router-dom';
+
 
   ChartJS.register(
     CategoryScale,
@@ -22,12 +24,18 @@ import {
   );
 
 export const SalesChart = (props) => {
+
+    let navigate = useNavigate()
+
   const theme = useTheme();
   const months = [ "January", "February", "March", "April", "May", "June", 
   "July", "August", "September", "October", "November", "December" ]
   
   const current = new Date()
   const date = current.getMonth()
+
+  const workoutFilter = props.workouts.filter(w => w.date_time === 9)
+  console.log(workoutFilter)
 
   const data = {
     datasets: [
@@ -37,7 +45,7 @@ export const SalesChart = (props) => {
         barThickness: 12,
         borderRadius: 4,
         categoryPercentage: 0.5,
-        data: [18, 5, 19, 27, 29, 19, 20],
+        data: [props.workouts.filter(w => w.date_time == 3).length, props.workouts.filter(w => w.date_time == 4).length, props.workouts.filter(w => w.date_time == 5).length, props.workouts.filter(w => w.date_time == 6).length, props.workouts.filter(w => w.date_time == 7).length, props.workouts.filter(w => w.date_time == 8).length, props.workouts.filter(w => w.date_time == 9).length],
         label: 'This year',
         maxBarThickness: 10
       },
@@ -47,12 +55,12 @@ export const SalesChart = (props) => {
         barThickness: 12,
         borderRadius: 4,
         categoryPercentage: 0.5,
-        data: [11, 20, 12, 29, 30, 25, 13],
+        data: [11, 20, 12, 29, 30, 25, props.workouts.filter(w => w.date_time == 9).length],
         label: 'Last year',
         maxBarThickness: 10
       }
     ],
-    labels: [ months[date - 5] , months[date - 4], months[date - 3], months[date - 2], months[date - 1], months[date], months[date + 1]]
+    labels: [ months[date - 6] , months[date - 5], months[date - 4], months[date - 3], months[date - 2], months[date - 1], months[date]]
   };
 
   const options = {
@@ -109,13 +117,12 @@ export const SalesChart = (props) => {
       <CardHeader
         action={(
           <Button
-            endIcon={<ArrowDropDownIcon fontSize="small" />}
             size="small"
           >
-            Last 7 days
+            Last 7 Months
           </Button>
         )}
-        title="Latest Sales"
+        title="Sessions By The Month 2021/2022"
       />
       <Divider />
       <CardContent>
@@ -143,6 +150,7 @@ export const SalesChart = (props) => {
           color="primary"
           endIcon={<ArrowRightIcon fontSize="small" />}
           size="small"
+          onClick={() => navigate('/workouts')}
         >
           Overview
         </Button>
