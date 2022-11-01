@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_01_062842) do
+ActiveRecord::Schema.define(version: 2022_11_01_063239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,13 +46,17 @@ ActiveRecord::Schema.define(version: 2022_11_01_062842) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer "date_time"
     t.integer "trainer_id"
     t.boolean "virtual"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "client_id"
     t.string "status"
+    t.integer "day"
+    t.integer "month"
+    t.integer "year"
+    t.integer "hour"
+    t.integer "minute"
   end
 
 end

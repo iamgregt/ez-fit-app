@@ -49,12 +49,15 @@ end
 
 200.times do
     Workout.create(
-    name: "Leg Workout",
-    date_time: Faker::Number.between(from: 1, to: 12),
+    month:Faker::Number.between(from: 1, to: 12),
     trainer_id: Faker::Number.between(from: 1, to: 13),
     virtual: Faker::Boolean.boolean,
     client_id: Faker::Number.between(from: 1, to: 40),
-    status: "scheduled"
+    status: "scheduled",
+    day: Faker::Number.between(from: 1, to: 30),
+    year: Faker::Number.between(from: 2021, to: 2022),
+    minute: Faker::Number.between(from: 1, to: 60),
+    hour: Faker::Number.between(from: 0, to: 23)
     
 )
 
