@@ -31,6 +31,8 @@ class WorkoutsController < ApplicationController
         head :no_content
     end
 
+
+
     private
 
     def workout_params

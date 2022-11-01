@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/trainers/:trainer_id/workouts-count", to: "trainers#workout_count"
   resources :comments
   resources :workouts
   get "/me", to: "trainers#show"

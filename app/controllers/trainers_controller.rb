@@ -41,6 +41,21 @@ class TrainersController < ApplicationController
         workout = Workout.find(params[:id])
         render json: client, include: :trainer
     end
+    def workout_count
+        if params[:trainer_id]
+            trainer = Trainer.find(params[:trainer_id])
+            workouts = trainer.workouts
+        else
+            workouts = Workout.all
+        end
+        
+        a = workouts.select {|w| w.virtual == true}
+        b = workouts.select {|w| w.virtual == false}
+        render json: {virtual: a.count, in_person: b.count}
+
+
+
+    end
 
     private
 

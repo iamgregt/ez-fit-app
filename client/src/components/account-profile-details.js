@@ -63,7 +63,8 @@ const states = [
         .then(r => r.json())
         .then(resp => {
             console.log(resp)
-            // window.document.reload()
+            alert('profile updated')
+            window.location.reload()
         })
       }
     
