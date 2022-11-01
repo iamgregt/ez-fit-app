@@ -6,6 +6,7 @@ import {Card, CardContent, Typography} from '@mui/material'
 import {useEffect, useState} from 'react'
 import ClientChart from './ClientChart';
 import TopSellers from './TopSellers';
+import {SalesChart} from './SalesChart';
 
 
 
@@ -46,8 +47,17 @@ function HomePage({clients, workouts}){
             >
               <TopSellers />
             </Grid>
-            
+            <Grid
+            item
+            lg={8}
+            md={12}
+            xl={9}
+            xs={12}
+          >
+            <SalesChart />
           </Grid>
+          </Grid>
+        <Grid></Grid>
         </Container>
       </Box>
     )
