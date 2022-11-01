@@ -1,13 +1,20 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {Box, Card, CardContent, CardHeader, Divider, Grid, Typography} from '@mui/material'
 import { Doughnut } from 'react-chartjs-2'
 import { height } from '@mui/system'
 import { useTheme } from '@emotion/react'
+import { UserContext } from './App'
 
 
 function ClientChart() {
 
+    const user = useContext(UserContext)
+
     const [clientCount, setClientCount] = useState()
+    const [sessionsByType, setSessionsByType] = useState({
+      virtual:0,
+      in_person:0
+    })
     const theme = useTheme()
 
         useEffect(() => {
@@ -16,13 +23,22 @@ function ClientChart() {
         .then(resp => {
             setClientCount(resp)
         })
+
+
+        fetch(`trainers/${user.id}/workouts-count`)
+        .then(r => r.json())
+        .then(resp => {
+          setSessionsByType(resp)
+          console.log(resp)
+          console.log(sessionsByType)
+        })
     }, [])
 
     const data = {
         datasets: [
           {
-            data: [clientCount, 15],
-            backgroundColor: ['#3F51B5', '#e53935'],
+            data: [sessionsByType.virtual, sessionsByType.in_person],
+            backgroundColor: ['#e53935','#3F51B5'],
             borderWidth: 8,
             borderColor: '#FFFFFF',
             hoverBorderColor: '#FFFFFF'
