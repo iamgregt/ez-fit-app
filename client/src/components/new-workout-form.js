@@ -100,7 +100,7 @@ function NewWorkoutForm({clients, setWorkouts}){
           .then(finishedData => {
             console.log(finishedData)
           })
-          // window.location.reload()
+          window.location.reload()
         })
         
         

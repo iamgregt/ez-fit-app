@@ -14,6 +14,8 @@ import Slide from '@mui/material/Slide';
 import { Table, TableCell, TableHead, TextField, TableRow, TableBody } from '@mui/material';
 import { useState } from 'react';
 import { NavItem } from './nav-item';
+import { useContext } from 'react';
+import { UserContext } from '../App';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,6 +28,9 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
 
   const [target, setTarget] = useState(targetWorkout)
   const [commentCount, setCommentCount] = useState(workout.comments.length)
+
+
+  const user = useContext(UserContext)
 
   function changeCommentCount(){
     setCommentCount((current) => (current + 1))
@@ -47,8 +52,7 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
     const updatedWorkout = {
         body: newComment ? newComment.target.value : "",
         workout_id: workout.id,
-        trainer_id: 1, 
-        client_id: 1
+        trainer_id: user.id
     }
 
     if(updatedWorkout.body !== ""){
