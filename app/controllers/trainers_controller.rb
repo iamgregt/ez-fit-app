@@ -53,13 +53,15 @@ class TrainersController < ApplicationController
         b = workouts.select {|w| w.virtual == false}
         render json: {virtual: a.count, in_person: b.count}
 
+    end
 
-
+    def top_sellers
+        render json: Trainer.order("workouts_sold DESC").limit(5)
     end
 
     private
 
     def trainer_params
-        params.permit(:first_name, :last_name, :email, :workouts_sold, :password)
+        params.permit(:first_name, :last_name, :email, :workouts_sold, :password, :avatar)
     end
 end

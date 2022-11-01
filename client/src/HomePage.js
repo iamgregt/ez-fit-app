@@ -5,6 +5,7 @@ import Workouts from './Workouts';
 import {Card, CardContent, Typography} from '@mui/material'
 import {useEffect, useState} from 'react'
 import ClientChart from './ClientChart';
+import TopSellers from './TopSellers';
 
 
 
@@ -43,7 +44,7 @@ function HomePage({clients, workouts}){
               xl={9}
               xs={12}
             >
-              {workouts ? <Workouts clients={clients} workouts={workouts}/> : null}
+              <TopSellers />
             </Grid>
             
           </Grid>

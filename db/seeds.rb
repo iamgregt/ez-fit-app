@@ -20,8 +20,10 @@ Trainer.create(
     first_name: Faker::Name.first_name ,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.safe_email,
-    workouts_sold: Faker::Number.between(from: 0, to: 12),
-    password: "test"
+    workouts_sold: Faker::Number.between(from: 0, to: 40),
+    password: "test",
+    avatar: Faker::Avatar.image
+
 )
 end
 
