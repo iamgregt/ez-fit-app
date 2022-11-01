@@ -18,6 +18,7 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import {LocalizationProvider} from '@mui/x-date-pickers'
 import {dayjs} from '@date-io/dayjs'
 import { DateTimePicker } from '@mui/x-date-pickers';
+import { UserContext } from '../App';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -35,6 +36,7 @@ function NewWorkoutForm({clients, setWorkouts}){
     const [client, setClient] = useState('')
     const [type, setType] = useState(false)
     const [comment, setComment] = useState('')
+    const user = React.useContext(UserContext)
 
 
 
@@ -68,12 +70,15 @@ function NewWorkoutForm({clients, setWorkouts}){
         
     
         const workoutData = {
-            name: "New Workout",
-            date_time: month,
-            trainer_id: 1,
+            trainer_id: user.id,
             virtual: type,
             client_id: client,
-            status: "Pending"
+            status: "Pending",
+            day: start.$D,
+            hour: start.$H,
+            minute: start.$m,
+            month: start.$M,
+            year: start.$y
 
         }
 
@@ -106,7 +111,7 @@ function NewWorkoutForm({clients, setWorkouts}){
           .then(finishedData => {
             console.log(finishedData)
           })
-          // window.location.reload()
+          window.location.reload()
         })
         
         
