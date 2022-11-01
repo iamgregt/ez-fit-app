@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   Box,
   Button,
@@ -9,6 +9,7 @@ import {
   Grid,
   TextField
 } from '@mui/material';
+import { UserContext } from '../App';
 
 
 const states = [
@@ -27,13 +28,13 @@ const states = [
   ];
 
   function AccountProfileDetails(props){
+
+    const user = useContext(UserContext)
+
     const [values, setValues] = useState({
-        firstName: 'Katarina',
-        lastName: 'Smith',
-        email: 'demo@devias.io',
-        phone: '',
-        state: 'Alabama',
-        country: 'USA'
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email
       });
     
       const handleChange = (event) => {
@@ -42,6 +43,29 @@ const states = [
           [event.target.name]: event.target.value
         });
       };
+
+      function handleUpdate(e){
+        e.preventDefault()
+        console.log(e)
+        console.log(values)
+        const updatedUser = {
+            first_name: values.first_name,
+            last_name: values.last_name,
+            email: values.email
+        }
+        fetch(`/trainers/${user.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedUser)
+        })
+        .then(r => r.json())
+        .then(resp => {
+            console.log(resp)
+            // window.document.reload()
+        })
+      }
     
       return (
         <form
@@ -69,10 +93,10 @@ const states = [
                     fullWidth
                     helperText="Please specify the first name"
                     label="First name"
-                    name="firstName"
+                    name="first_name"
                     onChange={handleChange}
                     required
-                    value={values.firstName}
+                    value={values.first_name}
                     variant="outlined"
                   />
                 </Grid>
@@ -84,10 +108,10 @@ const states = [
                   <TextField
                     fullWidth
                     label="Last name"
-                    name="lastName"
+                    name="last_name"
                     onChange={handleChange}
                     required
-                    value={values.lastName}
+                    value={values.last_name}
                     variant="outlined"
                   />
                 </Grid>
@@ -106,7 +130,7 @@ const states = [
                     variant="outlined"
                   />
                 </Grid>
-                <Grid
+                {/* <Grid
                   item
                   md={6}
                   xs={12}
@@ -161,7 +185,7 @@ const states = [
                       </option>
                     ))}
                   </TextField>
-                </Grid>
+                </Grid> */}
               </Grid>
             </CardContent>
             <Divider />
@@ -175,6 +199,8 @@ const states = [
               <Button
                 color="primary"
                 variant="contained"
+                type='submit'
+                onClick={handleUpdate}
               >
                 Save details
               </Button>

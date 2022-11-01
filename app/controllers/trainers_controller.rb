@@ -21,7 +21,8 @@ class TrainersController < ApplicationController
 
     def update
         trainer = Trainer.find_by(id: params[:id])
-        trainer.update(trainer_params)
+        render json: trainer.update!(trainer_params)
+        
     end
 
     def destroy

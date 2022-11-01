@@ -9,6 +9,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
   TableSortLabel,
@@ -97,10 +98,11 @@ function Workouts({workouts, setWorkouts, clients}){
     
     <Card>
     <CardHeader title="Latest Workouts" />
-    <NewWorkoutForm clients={clients} setWorkouts={setWorkouts}/>
+    <NewWorkoutForm clients={clients} setWorkouts={setWorkouts} />
     <PerfectScrollbar>
-      <Box sx={{ minWidth: 800 }}>
-        <Table>
+      <Box sx={{ minWidth: 800, paddingTop: '18px' }}>
+        <TableContainer sx={{height: 950}}>
+        <Table sx={{height: 'max-content'}}>
           <TableHead>
             <TableRow>
               <TableCell style={{width:'8%', padding: '16px'}}>
@@ -165,6 +167,7 @@ function Workouts({workouts, setWorkouts, clients}){
             }) : null}
           </TableBody>
         </Table>
+        </TableContainer>
       </Box>
     </PerfectScrollbar>
     <Box

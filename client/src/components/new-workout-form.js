@@ -109,7 +109,7 @@ function NewWorkoutForm({clients, setWorkouts}){
 
 
     return (
-        <div>
+        <div style={{paddingLeft: '20px', paddingBottom: '10px'}}>
           <Button variant="outlined" onClick={handleClickOpen}>
             New Workout
           </Button>
