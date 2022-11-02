@@ -11,11 +11,12 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { Table, TableCell, TableHead, TextField, TableRow, TableBody } from '@mui/material';
+import { Box, Table, TableCell, TableHead, TextField, TableRow, TableBody, InputLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { NavItem } from './nav-item';
 import { useContext } from 'react';
 import { UserContext } from '../App';
+import UpdateStatus from './updated-status';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -28,6 +29,7 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
 
   const [target, setTarget] = useState(targetWorkout)
   const [commentCount, setCommentCount] = useState(workout.comments.length)
+  const [status, setStatus] = useState(workout.status)
 
 
   const user = useContext(UserContext)
@@ -48,19 +50,23 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
     setOpen(false);
     console.log(e)
     console.log(newComment)
+    console.log(status)
 
     const updatedWorkout = {
         body: newComment ? newComment.target.value : "",
         workout_id: workout.id,
-        trainer_id: user.id
+        trainer_id: user.id,
     }
 
-    if(updatedWorkout.body !== ""){
+
+
+    if(updatedWorkout.body !== "" ){
         handleUpdatedWorkout(updatedWorkout)
     }else{
         console.log('no changes')
     }
   };
+
 
   function handleUpdatedWorkout(w){
     fetch('/comments', {
@@ -75,7 +81,7 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
       setTarget(resp)
       console.log(resp)
       changeCommentCount()
-      window.location.reload()
+      // window.location.reload()
     })
   }
 
@@ -129,7 +135,9 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
           onChange={setNewComment}
         />
         </List>
-        <Table>
+        <UpdateStatus workout={workout} />
+     <Box sx={{paddingTop: '14px'}}>
+     <Table>
             <TableHead>
                 <TableRow>
                     <TableCell>
@@ -149,6 +157,7 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
                 }): null}
             </TableBody>
         </Table>
+     </Box>
       </Dialog>
     </div>
   );

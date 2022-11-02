@@ -34,7 +34,7 @@ export const SalesChart = (props) => {
   const current = new Date()
   const date = current.getMonth()
 
-  const workoutFilter = props.workouts.filter(w => w.month === 9)
+  const workoutFilter = props.workouts ? props.workouts.filter(w => w.month === 9) : null
   console.log(workoutFilter)
 
   const data = {

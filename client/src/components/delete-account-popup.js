@@ -27,10 +27,17 @@ const [open, setOpen] = useState(false)
         method: "DELETE"
       })
       .then(() => {
-        setOpen(false)
-        navigate('/')
-        setUser()
+        fetch('/logout',{
+            method: "DELETE"
+          })
+          .then(() => {
+            setOpen(false)
+            navigate('/')
+            setUser()
+          })
+
       })
+      
   }
 
 
