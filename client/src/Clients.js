@@ -40,10 +40,10 @@ function Clients({clients}){
                   Email
                 </TableCell>
                 <TableCell>
-                  Location
+                  Weight
                 </TableCell>
                 <TableCell>
-                  Phone
+                  Total Workouts
                 </TableCell>
                 <TableCell>
                   Registration date
@@ -81,15 +81,19 @@ function Clients({clients}){
                   <TableCell>
                     {client.email}
                   </TableCell>
-                  <TableCell>
-                    {/* {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`} */}
+                  <TableCell
+                    sx={{paddingLeft: '30px'}}
+                  >
+                    {client.weight}
+                  </TableCell>
+                  <TableCell
+                  sx={{paddingLeft: '60px'}}
+                  >
+                    {client.total_workouts}
                   </TableCell>
                   <TableCell>
-                    {client.phone}
+                    {client.created_at}
                   </TableCell>
-                  {/* <TableCell>
-                    {format(customer.createdAt, 'dd/MM/yyyy')}
-                  </TableCell> */}
                 </TableRow>
                 )
               } 
