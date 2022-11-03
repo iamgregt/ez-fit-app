@@ -23,6 +23,7 @@ function Account({setUser}){
             <Typography
               sx={{ mb: 3 }}
               variant="h4"
+              color='#f8f9fa'
             >
               Account
             </Typography>
