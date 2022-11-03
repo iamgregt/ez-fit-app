@@ -47,6 +47,7 @@ function App() {
   const [clients, setClients] = useState()
   const [workouts, setWorkouts] = useState([])
   const [updated, setUpdated] = useState(false)
+  const [trainers, setTrainers] = useState([])
 
 const itemsList = [
   {
@@ -108,6 +109,15 @@ const itemsList = [
       console.log(resp)
       console.log('workouts loaded')
     })
+
+
+    fetch('/trainers')
+    .then(r => r.json())
+    .then(resp => {
+      setTrainers(resp)
+      console.log(resp)
+    })
+
 }, [])
 
 
@@ -160,7 +170,7 @@ const itemsList = [
       <Route path='/' element={<HomePage workouts={workouts} clients={clients} />} />
       <Route path="/new-client" element={<NewClientForm />} />
       <Route path="/workouts" element ={<Workouts setUpdated={setUpdated} workouts={workouts} setWorkouts={setWorkouts} clients={clients} />} />
-      <Route path="/clients" element={<Clients clients={clients} workouts={workouts} />} />
+      <Route path="/clients" element={<Clients clients={clients} workouts={workouts} trainers={trainers} />} />
       <Route path="/sign-in" element={<SignIn onLogin={setUser} />} />
       <Route path='/account' element={<Account setUser={setUser} />} />
     </Routes>

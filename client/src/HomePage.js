@@ -6,7 +6,7 @@ import {Card, CardContent, Typography} from '@mui/material'
 import {useEffect, useState} from 'react'
 import ClientChart from './ClientChart';
 import TopSellers from './TopSellers';
-import {SalesChart} from './SalesChart';
+import SalesChart from './SalesChart'
 
 
 

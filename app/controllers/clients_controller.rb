@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
 
     wrap_parameters format: []
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
+    skip_before_action :authorized, :only => [:index]
 
     def index
         render json: Client.all
@@ -10,7 +11,7 @@ class ClientsController < ApplicationController
     def show
         client = Client.find_by(id: params[:id])
         if client
-            render json: client
+            render json: client, include: :trainers
         else
             render json: { error: "No user" }, status: :unauthorized
         end

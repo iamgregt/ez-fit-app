@@ -23,8 +23,7 @@ import { useNavigate } from 'react-router-dom';
     Legend
   );
 
-export const SalesChart = (props) => {
-
+function SalesChart({workouts}) {
     let navigate = useNavigate()
 
   const theme = useTheme();
@@ -34,7 +33,7 @@ export const SalesChart = (props) => {
   const current = new Date()
   const date = current.getMonth()
 
-  const workoutFilter = props.workouts ? props.workouts.filter(w => w.month === 9) : null
+  const workoutFilter = workouts ? workouts.filter(w => w.month === 9) : null
   console.log(workoutFilter)
 
   const data = {
@@ -45,7 +44,7 @@ export const SalesChart = (props) => {
         barThickness: 12,
         borderRadius: 4,
         categoryPercentage: 0.5,
-        data: [props.workouts.filter(w => w.month == 3).length, props.workouts.filter(w => w.month == 4).length, props.workouts.filter(w => w.month == 5).length, props.workouts.filter(w => w.month == 6).length, props.workouts.filter(w => w.month == 7).length, props.workouts.filter(w => w.month == 8).length, props.workouts.filter(w => w.month == 9).length],
+        data: [workouts.filter(w => w.month == 3).length, workouts.filter(w => w.month == 4).length, workouts.filter(w => w.month == 5).length, workouts.filter(w => w.month == 6).length, workouts.filter(w => w.month == 7).length, workouts.filter(w => w.month == 8).length, workouts.filter(w => w.month == 9).length],
         label: 'This year',
         maxBarThickness: 10
       },
@@ -55,7 +54,7 @@ export const SalesChart = (props) => {
         barThickness: 12,
         borderRadius: 4,
         categoryPercentage: 0.5,
-        data: [11, 20, 12, 29, 30, 25, props.workouts.filter(w => w.month == 9).length],
+        data: [11, 20, 12, 29, 30, 25, workouts.filter(w => w.month == 9).length],
         label: 'Last year',
         maxBarThickness: 10
       }
@@ -113,7 +112,7 @@ export const SalesChart = (props) => {
   };
 
   return (
-    <Card {...props}>
+    <Card>
       <CardHeader
         action={(
           <Button
@@ -158,3 +157,5 @@ export const SalesChart = (props) => {
     </Card>
   );
 };
+
+export default SalesChart

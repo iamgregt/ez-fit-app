@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
     wrap_parameters format: []
+    skip_before_action :authorized, :only => [:index]
     
     def index
         if params[:trainer_id]

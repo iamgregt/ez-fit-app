@@ -81,7 +81,7 @@ function FullScreenDialog({workout, setWorkouts, workouts}) {
       setTarget(resp)
       console.log(resp)
       changeCommentCount()
-      // window.location.reload()
+      window.location.reload()
     })
   }
 

@@ -5,17 +5,17 @@ import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import {useNavigate} from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import ClientPopover from "./components/client-popover";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 
-function Clients({clients}){
+function Clients({clients, trainers}){
 
 
 
     let navigate = useNavigate() 
-
 
 
     
@@ -47,6 +47,9 @@ function Clients({clients}){
                 </TableCell>
                 <TableCell>
                   Registration date
+                </TableCell>
+                <TableCell>
+                  View Details
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -93,6 +96,9 @@ function Clients({clients}){
                   </TableCell>
                   <TableCell>
                     {client.created_at}
+                  </TableCell>
+                  <TableCell>
+                    <ClientPopover client={client} trainers={trainers} />
                   </TableCell>
                 </TableRow>
                 )
