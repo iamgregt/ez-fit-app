@@ -24,12 +24,18 @@ function Clients({clients, trainers}){
 
     return(
         <>
-        <Box container='true' sx={{padding: '10px'}}>
+
+        <Card>
+        <Box sx={{height: '36px'}}>
+    </Box>
+    <Typography variant='h4'  sx={{ fontFamily: 'Roslindale Deck', paddingLeft: '10px', paddingBottom: '18px'}}>
+      Client Page
+    </Typography>
+    <Box container='true' sx={{paddingBottom: '20px', paddingLeft: '10px'}}>
         <Button onClick={() => navigate('/new-client')}>Add A Client</Button>
         </Box>
-        <Card>
         <Box sx={{ minWidth: 1050 }}>
-         <TableContainer sx={{ height: 1000 }}>
+         <TableContainer sx={{ height: 1340 }}>
          <Table sx={{height: 'max-content'}}>
             <TableHead>
               <TableRow>

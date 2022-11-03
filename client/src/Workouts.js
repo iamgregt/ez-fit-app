@@ -13,7 +13,8 @@ import {
   TableHead,
   TableRow,
   TableSortLabel,
-  Tooltip
+  Tooltip,
+  Typography
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FullScreenDialog from './components/fullscreen-dialog';
@@ -36,11 +37,15 @@ function Workouts({workouts, setWorkouts, clients}){
   return (
     
     <Card>
-    <CardHeader title="Latest Workouts" />
+    <Box sx={{height: '40px'}}>
+    </Box>
+    <Typography variant='h4'  sx={{fontFamily: 'Roslindale Deck', paddingLeft: '22px', paddingBottom: '18px'}}>
+      Latest Workouts
+    </Typography>
     <NewWorkoutForm clients={clients} setWorkouts={setWorkouts} />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800, paddingTop: '18px' }}>
-        <TableContainer sx={{height: 950}}>
+        <TableContainer sx={{height: 1250}}>
         <Table sx={{height: 'max-content'}}>
           <TableHead>
             <TableRow>
