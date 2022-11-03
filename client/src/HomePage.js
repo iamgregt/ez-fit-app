@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2'
-import { Box, Container } from '@mui/material';
+import { Paper, Box, Container } from '@mui/material';
 import Clients from './Clients';
 import Workouts from './Workouts';
 import {Card, CardContent, Typography} from '@mui/material'

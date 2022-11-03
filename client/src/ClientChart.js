@@ -1,5 +1,5 @@
 import {useState, useEffect, useContext} from 'react'
-import {Box, Card, CardContent, CardHeader, Divider, Grid, Typography} from '@mui/material'
+import {Box, Card, CardContent, CardHeader, Divider, Grid, Paper, Typography} from '@mui/material'
 import { Doughnut } from 'react-chartjs-2'
 import { height } from '@mui/system'
 import { useTheme } from '@emotion/react'
@@ -83,7 +83,8 @@ function ClientChart() {
       ]
 
     return(
-        <Card>
+        <Paper elevation='24'>
+          <Card>
             <CardHeader title="Client By Session Type" />
             <Divider />
             <CardContent>
@@ -131,6 +132,7 @@ function ClientChart() {
 
             
         </Card>
+        </Paper>
     )
 }
 

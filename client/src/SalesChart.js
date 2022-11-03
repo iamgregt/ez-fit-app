@@ -1,5 +1,5 @@
 import { Bar } from 'react-chartjs-2';
-import { Box, Button, Card, CardContent, CardHeader, Divider, useTheme } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Divider, useTheme, Paper } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import {
@@ -112,7 +112,8 @@ function SalesChart({workouts}) {
   };
 
   return (
-    <Card>
+    <Paper elevation={"24"}>
+      <Card>
       <CardHeader
         action={(
           <Button
@@ -155,6 +156,7 @@ function SalesChart({workouts}) {
         </Button>
       </Box>
     </Card>
+    </Paper>
   );
 };
 

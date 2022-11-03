@@ -1,5 +1,5 @@
 import './App.css';
-import { AppBar, Box, Container, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText, Button } from '@mui/material';
+import {Paper, AppBar, Box, Container, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText, Button } from '@mui/material';
 import { makeStyles } from  '@mui/styles'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { red }from '@mui/material/colors/';
@@ -128,7 +128,7 @@ const itemsList = [
     <>
       
       <ThemeProvider theme={theme}>
-      <Box maxHeight={true} sx={{height: '100vh', display: 'flex', backgroundColor: 'rgb(17 24 39 / 93%)'}}>
+      <Paper maxHeight={true} sx={{height: '100vh', display: 'flex'}}>
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar sx={{backgroundColor: 'rgb(17 24 39 )'}}>
           <Typography variant='h6' noWrap component={'div'} style={{scale: '1.9', marginLeft: '20px', fontFamily: 'Roslindale Deck'}}>
@@ -178,7 +178,7 @@ const itemsList = [
     </Routes>
     </UserContext.Provider>
     </Box>
-    </Box>
+    </Paper>
       </ThemeProvider>
     </>
   );}

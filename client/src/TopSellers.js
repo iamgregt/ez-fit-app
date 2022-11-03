@@ -8,7 +8,8 @@ import {
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText
+  ListItemText,
+  Paper
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -30,7 +31,7 @@ function TopSellers(){
 
 
     return(
-       <Box>
+       <Paper elevation='24'>
          <Card>
         <CardHeader
           subtitle={`${topSellers.length} in total`}
@@ -83,7 +84,7 @@ function TopSellers(){
           </Button>
         </Box>
       </Card>
-       </Box>
+       </Paper>
     )
 }
 
