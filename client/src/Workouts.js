@@ -69,8 +69,8 @@ function Workouts({workouts, setWorkouts, clients}){
               <TableCell>
                 Status
               </TableCell>
-              <TableCell>
-              {''}
+              <TableCell style={{width: '30%'}}>
+              {'Edit Workout'}
               </TableCell>
             </TableRow>
           </TableHead>
