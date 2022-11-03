@@ -134,7 +134,7 @@ const itemsList = [
           <Typography variant='h6' noWrap component={'div'} style={{scale: '1.9', marginLeft: '20px', fontFamily: 'Roslindale Deck'}}>
             ezFit
           </Typography>
-          <Button style={{background: 'none', scale:'1.2'}} sx={{marginRight: 0, marginLeft: 'auto'}} onClick={handleLogout}>Logout</Button>
+          <Button style={{background: 'none', scale:'1.2'}} sx={{marginRight: 5, marginLeft: 'auto'}} onClick={handleLogout}>Logout</Button>
         </Toolbar>
       </AppBar>
       <Drawer variant='permanent' sx={{ width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box'}}}>
