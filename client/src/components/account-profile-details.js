@@ -28,7 +28,7 @@ const states = [
     }
   ];
 
-  function AccountProfileDetails(props){
+  function AccountProfileDetails({setUser}){
 
     const user = useContext(UserContext)
     const [active, setActive] = useState(false)
@@ -75,7 +75,6 @@ const states = [
         <form
           autoComplete="off"
           noValidate
-          {...props}
         >
           <Card>
             <CardHeader
@@ -137,7 +136,7 @@ const states = [
                 <Grid
                 item
                 >
-                  <DeleteAccount setUser={props.setUser} />
+                  <DeleteAccount setUser={setUser} />
                 </Grid>
                 {/* <Grid
                   item
