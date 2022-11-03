@@ -27,32 +27,32 @@ function HomePage({clients, workouts}){
 
 
     return(
-        <Box component='main' sx={{flexGrow:1, py: 8}}>
+        <Box component='main' sx={{flexGrow:1, py: 5}}>
         
         <Container maxWidth={false}>
           <Grid container spacing={3} style={{display: 'flex', flexFlow: 'row wrap', marginTop: '-24px', width: 'calc(100% + 24px)', marginLeft: '-24px', boxSizing: 'border-box'}}>
           <Grid item lg={4}
               md={6}
-              xl={3}
+              xl={'auto'}
               xs={12}
               sx={{maxWidth: true}}>
               
           <ClientChart />
         </Grid>
         <Grid
-              item
-              lg={8}
-              md={12}
-              xl={9}
+              item lg={4}
+              md={6}
+              xl={4.5}
               xs={12}
+              sx={{maxWidth: true}}
             >
               <TopSellers />
             </Grid>
             <Grid
             item
-            lg={8}
-            md={12}
-            xl={9}
+            lg={9}
+            md={13}
+            xl={10}
             xs={12}
           >
             <SalesChart workouts={workouts} />

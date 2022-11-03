@@ -30,7 +30,7 @@ function TopSellers(){
 
 
     return(
-       <Box sx={{width: 600}}>
+       <Box>
          <Card>
         <CardHeader
           subtitle={`${topSellers.length} in total`}
