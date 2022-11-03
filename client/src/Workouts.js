@@ -116,14 +116,14 @@ function Workouts({workouts, setWorkouts, clients}){
         p: 2
       }}
     >
-      <Button
+      {/* <Button
         color="primary"
         endIcon={<ArrowRightIcon fontSize="small" />}
         size="small"
         variant="text"
       >
         View all
-      </Button>
+      </Button> */}
     </Box>
   </Card>
   )

@@ -1,4 +1,5 @@
 import {
+  Alert,
     Avatar,
     Box,
     Button,
@@ -8,16 +9,22 @@ import {
     Divider,
     Typography
   } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../App';
   
 
 function AccountProfile(){
 
     const user = useContext(UserContext)
+    const [alert, setAlert] = useState(false)
+
+   function handleClick(){
+      setAlert(!alert)
+    }
 
     return(
         <Card>
+          {alert ? <Alert severity="warning">Upload Avatar Coming Soon!</Alert> : null}
     <CardContent>
       <Box
         sx={{
@@ -57,9 +64,10 @@ function AccountProfile(){
         variant="outlined"
         component="label"
         type='submit'
+        onClick={handleClick}
       >
-        Upload pictures
-        <input type='file' hidden />
+        Upload Avatar
+        {/* <input type='file' hidden /> */}
       </Button>
     </CardActions>
   </Card>
