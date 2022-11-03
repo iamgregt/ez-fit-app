@@ -76,6 +76,9 @@ function Workouts({workouts, setWorkouts, clients}){
           </TableHead>
           <TableBody>
             {myWorkouts ? myWorkouts.map((workout) => {
+
+                const workoutType = workout.virtual === true ? 'Virutal' : 'In-Person'
+
               return(
   
                   <TableRow
@@ -92,7 +95,7 @@ function Workouts({workouts, setWorkouts, clients}){
                       {workout.created_at}
                     </TableCell>
                     <TableCell>
-                     {workout.name}
+                     {workoutType}
                     </TableCell>
                     <TableCell>
                       {workout.status}
