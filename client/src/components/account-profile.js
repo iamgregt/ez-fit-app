@@ -38,19 +38,22 @@ function AccountProfile(){
           sx={{
             height: 64,
             mb: 2,
-            width: 64
+            width: 64,
+            scale: '1.2'
+            
           }}
         />
         <Typography
           color="textPrimary"
           gutterBottom
-          variant="h5"
+          variant="h4"
         >
           {user.first_name}
         </Typography>
         <Typography
           color="textPrimary"
-          variant="h5"
+          variant="h4"
+          sx={{mt: -1.8}}
         >
           {user.last_name}
         </Typography>
