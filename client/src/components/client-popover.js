@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { Box } from '@mui/material';
+import { Avatar, Box, ListItemAvatar } from '@mui/material';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -58,9 +58,6 @@ export default function ClientPopover({client, trainers}) {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {client.name}
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              save
-            </Button>
           </Toolbar>
         </AppBar>
         <List>
@@ -77,11 +74,15 @@ export default function ClientPopover({client, trainers}) {
         </List>
         <Box>
             <Divider />
+            <Typography variant='h3'>Previous Trainers</Typography>
             <List>
                 {client.trainers ? client.trainers.map((t) => {
                     return(
                         <ListItem key={t.id}>
-                        {t.first_name} {t.last_name}
+                        <ListItemAvatar>
+                          <Avatar alt={`${t.first_name} ${t.last_name}`} src={t.avatar} />
+                        </ListItemAvatar>
+                        <ListItemText>{t.first_name} {t.last_name}</ListItemText>
                     </ListItem>
                     )
                 }): null}
