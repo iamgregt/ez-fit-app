@@ -47,13 +47,14 @@ function AccountProfile(){
           color="textPrimary"
           gutterBottom
           variant="h4"
+          sx={{fontFamily: 'Roslindale Deck'}}
         >
           {user.first_name}
         </Typography>
         <Typography
           color="textPrimary"
           variant="h4"
-          sx={{mt: -1.8}}
+          sx={{mt: -1.8, fontFamily: 'Roslindale Deck'}}
         >
           {user.last_name}
         </Typography>

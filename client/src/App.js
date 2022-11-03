@@ -131,7 +131,7 @@ const itemsList = [
       <Box maxHeight={true} sx={{height: '100vh', display: 'flex', backgroundColor: 'rgb(17 24 39 / 93%)'}}>
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar sx={{backgroundColor: 'rgb(17 24 39 )'}}>
-          <Typography variant='h6' noWrap component={'div'} style={{scale: '1.3', marginLeft: '20px'}}>
+          <Typography variant='h6' noWrap component={'div'} style={{scale: '1.9', marginLeft: '20px', fontFamily: 'Roslindale Deck'}}>
             ezFit
           </Typography>
           <Button style={{background: 'none', scale:'1.2'}} sx={{marginRight: 0, marginLeft: 'auto'}} onClick={handleLogout}>Logout</Button>
