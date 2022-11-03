@@ -4,7 +4,8 @@ import { Doughnut } from 'react-chartjs-2'
 import { height } from '@mui/system'
 import { useTheme } from '@emotion/react'
 import { UserContext } from './App'
-
+import LaptopMacIcon from '@mui/icons-material/LaptopMac'
+import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 
 function ClientChart() {
 
@@ -68,6 +69,19 @@ function ClientChart() {
         }
       };
 
+      const clientData = [
+        {
+          type: "Virtual",
+          value: sessionsByType.virtual,
+          icon: LaptopMacIcon
+        },
+        {
+          type: "In Person",
+          value: sessionsByType.in_person,
+          icon: SportsGymnasticsIcon
+        }
+      ]
+
     return(
         <Card>
             <CardHeader title="Client By Session Type" />
@@ -76,7 +90,45 @@ function ClientChart() {
                 <Box sx={{height: 300, position: 'relative'}}>
                 <Doughnut data={data} options={options} />
                 </Box>
+                <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            pt: 2
+          }}
+        >
+          {clientData.map(({
+            color,
+            icon: Icon,
+            title,
+            value
+          }) => (
+            <Box
+              key={title}
+              sx={{
+                p: 1,
+                textAlign: 'center'
+              }}
+            >
+              <Icon color="action" />
+              <Typography
+                color="textPrimary"
+                variant="body1"
+              >
+                {title}
+              </Typography>
+              <Typography
+                style={{ color }}
+                variant="h4"
+              >
+                {value}
+                
+              </Typography>
+            </Box>
+            ))}
+             </Box>
             </CardContent>
+
             
         </Card>
     )
