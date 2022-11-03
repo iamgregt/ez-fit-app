@@ -12,7 +12,8 @@ Trainer.create(
     last_name: "Taylor",
     email: "taylor.gregory901@gmail.com",
     workouts_sold: 0,
-    password: "test"
+    password: "test",
+    avatar: Faker::Avatar.image
 )
 
 12.times do 

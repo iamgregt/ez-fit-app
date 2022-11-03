@@ -67,6 +67,10 @@ function NewWorkoutForm({clients, setWorkouts}){
         console.log(start)
         
         const month = start.$M
+        const newCount = user.workouts_sold + 1
+        const countObj = {
+          workouts_sold: newCount
+        }
         
     
         const workoutData = {
@@ -111,9 +115,21 @@ function NewWorkoutForm({clients, setWorkouts}){
           .then(finishedData => {
             console.log(finishedData)
           })
-          window.location.reload()
+
         })
+
+        fetch(`/trainers/${user.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(countObj)
+        })
+        .then(r => r.json())
+        .then(resp => console.log(resp))
         
+       
+        window.location.reload()
         
         
       };

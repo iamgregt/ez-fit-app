@@ -39,19 +39,13 @@ function AccountProfile(){
           gutterBottom
           variant="h5"
         >
-          {user.name}
+          {user.first_name}
         </Typography>
         <Typography
-          color="textSecondary"
-          variant="body2"
+          color="textPrimary"
+          variant="h5"
         >
-          {`${user.city} ${user.country}`}
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
-          {user.timezone}
+          {user.last_name}
         </Typography>
       </Box>
     </CardContent>
@@ -62,6 +56,7 @@ function AccountProfile(){
         fullWidth
         variant="outlined"
         component="label"
+        type='submit'
       >
         Upload pictures
         <input type='file' hidden />
