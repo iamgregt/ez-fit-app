@@ -1,12 +1,10 @@
 import './App.css';
-import {Paper, AppBar, Box, Container, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography, ListItemText, Button } from '@mui/material';
+import {Paper, AppBar, Box, Divider, Drawer, Toolbar, Typography, Button } from '@mui/material';
 import { makeStyles } from  '@mui/styles'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { red }from '@mui/material/colors/';
-import Grid from '@mui/material/Unstable_Grid2'
+import { ThemeProvider } from '@mui/material/styles'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Clients from './Clients';
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage';
 import NewClientForm from './NewClientForm';
@@ -19,20 +17,11 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { NavItem } from './components/nav-item';
 import { theme } from './theme/'
 import Account from './Account';
-import { maxHeight } from '@mui/system';
-import {motion} from 'framer-motion/dist/framer-motion'
  
 export const UserContext = createContext()
 
 
-const drawerWidth = 240;
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: red[500]
-//     }
-//   }
-// });
+const drawerWidth = 300;
 
 const useStyles = makeStyles({
   drawer: {
