@@ -12,7 +12,8 @@ import {
     Legend,
   } from 'chart.js';
 import { useNavigate } from 'react-router-dom';
-
+import { motion } from 'framer-motion/dist/framer-motion'
+ 
 
   ChartJS.register(
     CategoryScale,
@@ -112,7 +113,13 @@ function SalesChart({workouts}) {
   };
 
   return (
-    <Paper elevation={"24"}>
+    <Paper elevation={"24"} component={motion.div} 
+    initial={{y: "50%", opacity: 0, scale: 0.5}}
+            animate={{y: 0, opacity: 1, scale: 1}}
+            exit={{y: "50%", opacity: 0, transition: {duration: 2}}}
+            transition={{duration: 0.6, ease: "easeOut"}}
+            whileHover={{scale: 1.035}}
+    >
       <Card>
       <CardHeader
         action={(
