@@ -8,6 +8,7 @@ import ClientChart from './ClientChart';
 import TopSellers from './TopSellers';
 import SalesChart from './SalesChart'
 import Header from './Header';
+import { motion } from 'framer-motion/dist/framer-motion'
 
 
 
@@ -32,7 +33,7 @@ function HomePage({clients, workouts}){
         <Header />
         <Box component='main' sx={{flexGrow:1, py: 5}}>
         
-        <Container maxWidth={false}>
+        <Container maxWidth={false} component={motion.div} >
           <Grid container spacing={3} style={{display: 'flex', flexFlow: 'row wrap', marginTop: '-24px', width: 'calc(100% + 24px)', marginLeft: '-24px', boxSizing: 'border-box'}}>
           <Grid item lg={4}
               md={6}
@@ -63,7 +64,8 @@ function HomePage({clients, workouts}){
           </Grid>
         <Grid></Grid>
         </Container>
-      </Box>
+        </Box>
+
         </>
     )
 }
