@@ -6,6 +6,7 @@ import { useTheme } from '@emotion/react'
 import { UserContext } from './App'
 import LaptopMacIcon from '@mui/icons-material/LaptopMac'
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import {motion} from 'framer-motion/dist/framer-motion'
 
 function ClientChart() {
 

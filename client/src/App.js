@@ -20,6 +20,7 @@ import { NavItem } from './components/nav-item';
 import { theme } from './theme/'
 import Account from './Account';
 import { maxHeight } from '@mui/system';
+import {motion} from 'framer-motion/dist/framer-motion'
  
 export const UserContext = createContext()
 
