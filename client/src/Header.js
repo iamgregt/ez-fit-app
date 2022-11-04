@@ -1,5 +1,5 @@
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import { Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { UserContext } from './App';
 import { Box } from '@mui/material'
@@ -16,7 +16,7 @@ function Header(){
 
     return(
         <>
-        <Box component='div' sx={{display: 'flex'}}>
+        <Box className='header-main' component='div' sx={{display: 'flex'}}>
             <Box component={motion.div} sx={{pt: '20px', pl: '25px'}} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <AddBoxOutlinedIcon className='icon' />
             </Box>
