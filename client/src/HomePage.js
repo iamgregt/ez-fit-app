@@ -7,6 +7,7 @@ import {useEffect, useState} from 'react'
 import ClientChart from './ClientChart';
 import TopSellers from './TopSellers';
 import SalesChart from './SalesChart'
+import Header from './Header';
 
 
 
@@ -27,6 +28,8 @@ function HomePage({clients, workouts}){
 
 
     return(
+        <>
+        <Header />
         <Box component='main' sx={{flexGrow:1, py: 5}}>
         
         <Container maxWidth={false}>
@@ -61,6 +64,7 @@ function HomePage({clients, workouts}){
         <Grid></Grid>
         </Container>
       </Box>
+        </>
     )
 }
 
