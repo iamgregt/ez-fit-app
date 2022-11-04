@@ -8,7 +8,7 @@ input {
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid white;
+  border: 1px solid black;
   padding: 10px 15px;
   margin-bottom: 15px;
   font-size: 14px;
@@ -29,7 +29,7 @@ section > label {
 input[type="submit"],
 .button {
   position: relative;
-  background: #ec5990;
+  background: rgb(206, 71, 71);
   color: white;
   text-transform: uppercase;
   border: none;
@@ -82,7 +82,7 @@ input[type="submit"],
   
   input[type="submit"]:hover,
   button[type="button"]:hover {
-    background: #bf1650;
+    background:rgba(255, 0, 0, 0.719);
     color: white;
   }
   
@@ -110,7 +110,7 @@ input[type="submit"],
   
   .h1 {
     margin-top: 80px;
-    color: white;
+    color: black;
     font-size: 25px;
     padding-bottom: 0px;
   }

@@ -50,11 +50,11 @@ function NewClientForm() {
     })}>
       {error ? <h4 style={{color:'white'}}>{error}</h4> : null}
       <FormHeader />
-      <input {...register("firstName")} placeholder="First name" />
-      <input {...register("lastName")} placeholder="Last name" />
-      <input type='age' {...register("age")} placeholder='Age'/>
-      <input type='email' {...register("email")} placeholder="Email Address" />
-      <input type='number' {...register("weight")} placeholder='Weight (lbs)' />
+      <input {...register("firstName")} placeholder="First name" required />
+      <input {...register("lastName")} placeholder="Last name" required />
+      <input type='age' {...register("age")} placeholder='Age' required/>
+      <input type='email' {...register("email")} placeholder="Email Address" required />
+      <input type='number' {...register("weight")} placeholder='Weight (lbs)' required />
       <input type="submit" />
     </form>
     
