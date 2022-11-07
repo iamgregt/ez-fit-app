@@ -23,11 +23,11 @@ export const UserContext = createContext()
 
 const drawerWidth = 300;
 
-const useStyles = makeStyles({
-  drawer: {
-    width: 240,
-  }
-})
+// const useStyles = makeStyles({
+//   drawer: {
+//     width: 240,
+//   }
+// })
 
 
 function App() {
