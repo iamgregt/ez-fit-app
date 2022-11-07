@@ -122,7 +122,7 @@ const itemsList = [
       <ThemeProvider theme={theme}>
       <Paper maxHeight={true} sx={{height: '100vh', display: 'flex'}}>
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar sx={{backgroundColor: 'rgb(113,137,119)'}}>
+        <Toolbar sx={{backgroundColor: 'rgb(37,35,43)'}}>
           <Typography variant='h6' noWrap component={'div'} style={{scale: '1.9', marginLeft: '20px', fontFamily: 'Roslindale Deck'}}>
             ezFit
           </Typography>
@@ -131,7 +131,7 @@ const itemsList = [
       </AppBar>
       <Drawer variant='permanent' sx={{ width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box'}}}>
         <Toolbar />       
-        <Box sx={{overflow: 'auto', backgroundColor: 'rgb(113,137,119);', height: '100%', paddingTop: '13px'}} >
+        <Box sx={{overflow: 'auto', backgroundColor: 'rgb(37,35,43);', height: '100%', paddingTop: '13px'}} >
           <Box sx={{flexGrow: 1}}>
             {itemsList.map((i) => {
               return(
