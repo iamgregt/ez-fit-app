@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import ClientPopover from "./components/client-popover";
 
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 

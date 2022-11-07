@@ -1,5 +1,5 @@
 import './App.css';
-import {Paper, AppBar, Box, Divider, Drawer, Toolbar, Typography, Button } from '@mui/material';
+import { Paper, AppBar, Box, Divider, Drawer, Toolbar, Typography, Button } from '@mui/material';
 import { makeStyles } from  '@mui/styles'
 import { ThemeProvider } from '@mui/material/styles'
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -109,6 +109,7 @@ const itemsList = [
       console.log(resp)
     })
 
+
 }, [])
 
 
@@ -116,11 +117,12 @@ const itemsList = [
   console.log(user)
   return (
     <>
+
       
       <ThemeProvider theme={theme}>
       <Paper maxHeight={true} sx={{height: '100vh', display: 'flex'}}>
       <AppBar position='fixed' sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar sx={{backgroundColor: 'rgb(17 24 39 )'}}>
+        <Toolbar sx={{backgroundColor: 'rgb(113,137,119)'}}>
           <Typography variant='h6' noWrap component={'div'} style={{scale: '1.9', marginLeft: '20px', fontFamily: 'Roslindale Deck'}}>
             ezFit
           </Typography>
@@ -129,11 +131,11 @@ const itemsList = [
       </AppBar>
       <Drawer variant='permanent' sx={{ width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box'}}}>
         <Toolbar />       
-        <Box sx={{overflow: 'auto', backgroundColor: 'rgb(17, 24, 39);', height: '100%', paddingTop: '13px'}} >
+        <Box sx={{overflow: 'auto', backgroundColor: 'rgb(113,137,119);', height: '100%', paddingTop: '13px'}} >
           <Box sx={{flexGrow: 1}}>
             {itemsList.map((i) => {
               return(
-                <NavItem title={i.text} onClick={i.onClick} key={i.text} />
+                <NavItem title={i.text} onClick={i.onClick} key={i.text} sx={{pt: '10px'}} />
               )
             })}
           </Box>

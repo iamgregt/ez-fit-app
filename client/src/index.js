@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 import {CssBaseline} from '@mui/material'
+import logo from './assets/avatars/avatar_1.png'
 
 
 ReactDOM.render(

@@ -34,7 +34,7 @@ function HomePage({clients, workouts}){
         <Box component='main' sx={{flexGrow:1, py: 5}}>
         
         <Container maxWidth={false} component={motion.div} >
-          <Grid container spacing={3} style={{display: 'flex', flexFlow: 'row wrap', marginTop: '-24px', width: 'calc(100% + 24px)', marginLeft: '-24px', boxSizing: 'border-box'}}>
+          <Grid container spacing={10} style={{display: 'flex', flexFlow: 'row wrap', marginTop: '-24px', width: 'calc(100% + 24px)', marginLeft: '-24px', boxSizing: 'border-box'}}>
           <Grid item lg={4}
               md={6}
               xl={4}

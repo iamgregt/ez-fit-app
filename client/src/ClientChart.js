@@ -12,7 +12,6 @@ function ClientChart() {
 
     const user = useContext(UserContext)
 
-    const [clientCount, setClientCount] = useState()
     const [sessionsByType, setSessionsByType] = useState({
       virtual:0,
       in_person:0
@@ -20,11 +19,7 @@ function ClientChart() {
     const theme = useTheme()
 
         useEffect(() => {
-        fetch('/clients/clientcount')
-        .then(r => r.json())
-        .then(resp => {
-            setClientCount(resp)
-        })
+        
 
 
         fetch(`trainers/${user.id}/workouts-count`)
