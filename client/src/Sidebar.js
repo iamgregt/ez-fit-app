@@ -16,7 +16,7 @@ import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from "@mui/material";
 
 const drawerWidth = 240;
-const transitionDuration = 1000; //can also use theme.transitions.duration
+const transitionDuration = 1000; //cann also use theme.transitions.duration
 
 const useStyles = makeStyles(() => {
   return ({
