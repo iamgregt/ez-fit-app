@@ -18,6 +18,8 @@ class TrainersController < ApplicationController
 
     def create
         render json: Trainer.create!(trainer_params)
+    rescue ActiveRecord::RecordInvalid => e
+        render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     end
 
     def update
